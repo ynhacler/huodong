@@ -114,13 +114,12 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
-                	gogo.resetload();
                 	//gogo.noData(false);
                   if(data.info.length == 0){
                     // 锁定
-                    //me.lock();
+                    gogo.lock();
                     // 无数据
-                    //me.noData();
+                    gogo.noData();
                   }else{
                     var result = '';
                     url = data.msg;
@@ -143,11 +142,11 @@ $signPackage = $jssdk->GetSignPackage();
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
-                  //me.resetload();
+                  gogo.resetload();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
-                    //me.resetload();
+                    gogo.resetload();
                     $('.dropload-refresh').html('系统忙，请稍后再试');
                 }
             });
