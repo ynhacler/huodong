@@ -99,7 +99,7 @@ $signPackage = $jssdk->GetSignPackage();
   </ul>
   <div class="color-block content-block" style="top: 93%;width: 100%;margin-left: 0rem;margin-right: 0rem;position: fixed;"></div>
   <script type="text/javascript" src="/pub/dropload.min.js"></script>
-  
+  <p style="display: none;" value='5' id="jilu" name="jilu"></p>
 	<script>
   $(function(){
     var url = "/szrsgg/index.php?m=Home&c=User&a=nextpage";
