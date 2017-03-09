@@ -117,9 +117,9 @@ $signPackage = $jssdk->GetSignPackage();
                 	//var me = $('.content-block');
                   if(data.info.length == 0){
                     // 锁定
-                    me.lock();
+                    //me.lock();
                     // 无数据
-                    me.noData();
+                    //me.noData();
                   }else{
                     var result = '';
                     url = data.msg;
@@ -146,7 +146,7 @@ $signPackage = $jssdk->GetSignPackage();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
-                    me.resetload();
+                    //me.resetload();
                     $('.dropload-refresh').html('系统忙，请稍后再试');
                 }
             });
@@ -164,7 +164,7 @@ $signPackage = $jssdk->GetSignPackage();
                 	//alert(JSON.stringify(me));
                   if(data.info.length == 0){
                     // 锁定
-                    me.lock();
+                    //me.lock();
                     // 无数据
                     me.noData();
                   }else{
