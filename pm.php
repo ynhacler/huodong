@@ -87,6 +87,53 @@ $signPackage = $jssdk->GetSignPackage();
 	<script>
 
   $(function(){
+  	//select变化
+  	$('#ss').change(function(){ 
+		$("#z_next").val(1);
+		$('.content-lists-main').empty();
+		$.ajax({
+                type: 'GET',
+                url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
+                dataType: 'json',
+                success: function(data){
+                  if(data.info.length == 0){
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                  }else{
+                    var result = '';
+                    url = data.msg;
+                    var nextzhi = $("#z_next").attr("value");
+                    for(x in data.info){
+                      var value = data.info[x];
+                      result += '      <li>' +
+                              '<a href="/zl.php?uu='+value.openid+'">' +
+                                '<div class="list-head">' +
+                                  '<img src="'+value.headimgurl+'" alt="">' +
+                                '</div>' +
+                                '<span class="list-name">'+value.nickname+'</span>' +
+                                '<div class="list-fen-rank"><br>助力值<br><br>'+value.praised_num+'</div>' +
+                                '<div class="list-rank">'+nextzhi+'</div>' +
+                              '</a>'
+                            '</li>';
+                        nextzhi++;
+                    }
+                    $("#z_next").val(nextzhi);
+                  }
+                  $('.content-lists-main').append(result);
+                  // 每次数据加载完，必须重置
+                  me.resetload();
+                },
+                error: function(xhr, type){
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                    $('.dropload-refresh').html('系统忙，请稍后再试');
+                }
+            });
+	});
+
+  	//下拉
     $('.content-block').dropload({
         scrollArea : window,
         loadDownFn : function(me){
