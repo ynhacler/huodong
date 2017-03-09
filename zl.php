@@ -206,6 +206,17 @@ $re123 = select_DB_2($lizhisql);
 </p>
 <div class="ul-li">
 	<ul class="list">
+	<?php
+		$sqldd = "select headimgurl from wx_user a,praise_table b where b.praised_uid='{$z_userinfo['openid']}' and b.praise_uid=a.openid;";
+		$re = select_DB_2($sqldd);
+		foreach ($re as $key => $value) { 
+			echo "<li>";
+					echo "<a href='#'>";
+						echo "<img src='{$value['headimgurl']}' alt=''>";
+					echo "</a>";
+			echo "</li>";
+		}
+	?>
 	</ul>
 </div>
 

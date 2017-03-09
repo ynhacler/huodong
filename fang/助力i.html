@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection"content="telephone=no, email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+<!-- <link rel="stylesheet" href="/szrsgg/Public/Home/css/style.css?ver=oWhps"> -->
+<link rel="stylesheet" href="/szrsgg/Public/Home/css/style.css">
+<script type="text/javascript" src="/szrsgg/Public/Home/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/szrsgg/Public/Home/js/rem.js"></script>
+<title>助力</title>
+</head>
+
+	<style>
+	.time-title{
+		margin-top: 2.5rem;
+		height: .4rem;
+		font-size: .3rem;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: .1rem;
+		color: red;
+	}
+	.timer{
+		text-align: center;
+		font-size: .2rem;
+	}
+	.timer font{
+		font-size: .3rem;
+		color: red;
+	}
+	.userinfo{
+		display: inline-block;
+		width: 3rem;
+		margin-left: .55rem;
+		margin-top: .3rem;
+		border-radius: .1rem;
+		height: 1rem;
+		background-color: rgb(218,185,107);
+	}
+	.list-head{
+		display: inline-block;
+		width: .7rem;
+		height: .7rem;
+		margin-left: .2rem;
+		float: left;
+	}
+	.list-head img{
+		border-radius: .3rem;
+		margin-top: .1rem;
+	}
+	.userinfo .txt{
+		font-size: .15rem;
+		margin-top: .2rem;
+		margin-left: 1rem;
+	}
+	.line-txt{
+		font-size: .2rem;
+		text-align: center;
+	}
+	.line{
+		width: 1rem;
+    border: 1px solid #000000;
+    display: inline-block;
+	}
+	.list li{
+		height: .5rem;
+		width: .5rem;
+		float: left;
+		padding: 0px;
+		margin-left: .1rem;
+	}
+	.list li img{
+		border-radius: .3rem;
+	}
+	.ul-li{
+		padding-left: 0.3rem;
+		background-image: url(/szrsgg/Public/Home/images/home-bg2.png);
+		display: inline-block;
+		width: 3.3rem;
+		margin-left: .3rem;
+		margin-top: .1rem;
+		background-size: 3.6rem;
+	}
+</style>
+<body class="home-bg">
+<p class="time-title">倒计时</p>
+<p class="timer">
+	<font id="day"></font>
+	<span>天</span>
+	<font id="hour"></font>
+	<span>时</span>
+	<font id="minute"></font>
+	<span>分</span>
+	<font id="second"></font>
+	<span>秒</span>
+</p>
+<div class="userinfo">
+	<div class="list-head">
+		<img src="http://wx.qlogo.cn/mmopen/AjqZqOpBTTPQYc5mFoERN1NHolVymqVFLaE6mY7ultCEcuXymkIBichjicbjb2dEE7OTy3D0QopZzEgTe4xp9vY7WcDRGibMvup/0" alt="">
+	</div>
+	<p class="txt" style="font-weight:bold;">老林</p>
+	<p class="txt">排名：第477位</p>
+  <div class="list-fen"><br>助力值<br><br><font style="font-size:.2rem;font-weight:bold;">8</font></div>
+</div>
+<p style="text-align:center;">
+	<a id="help" href="javascript:;" onclick="help(59)"><button class="btn-help"></button></a>
+	<a href="javascript:;" onclick="alert('点击右上角分享')"><button class="btn-find"></button></a>
+</p>
+<p style="text-align:center;">
+			<a href="/szrsgg/index.php?m=Home&c=User&a=infoform"><button class="btn-come"></button></a>	<a href="/szrsgg/index.php?m=Home&c=User&a=reward"><button class="btn-reward"></button></a>
+</p>
+<p class="line-txt">
+	<span class="line"></span>
+	老林的助力团
+	<span class="line"></span>
+</p>
+<div class="ul-li">
+	<ul class="list">
+		<li>
+				<a href="#">
+					<img src="http://wx.qlogo.cn/mmopen/4S6TNumN5HibNRuD1n5YCaFLyrT0A3ialdoDVosY85vZCms2YWgiaGwlIAZnVaomfTr0bPJ8b79XL23cVMficgs2ic83oUreE7ISg/0" alt=""></li>
+				</a>	
+	</ul>
+</div>
+<script>
+var helping = false;
+function help(helpUid){
+	if(!helping){
+		helping = true;
+		var url = "/szrsgg/index.php?m=Home&c=User&a=help";
+		$.post(url,{"helpUid":helpUid},function(data){
+			alert(data.msg);
+			helping = false;
+			location.reload();
+		},'json');
+	}
+}
+function GetRTime(){
+	var EndTime= new Date("2017/02/20 12:27:54");
+	var NowTime = new Date();
+	var t =EndTime.getTime() - NowTime.getTime();
+	var d=0;
+	var h=0;
+	var m=0;
+	var s=0;
+	if(t>=0){
+		d=Math.floor(t/1000/60/60/24);
+		h=Math.floor(t/1000/60/60%24);
+		m=Math.floor(t/1000/60%60);
+		s=Math.floor(t/1000%60);
+	}
+
+	$('#day').html(d);
+	$('#hour').html(h);
+	$('#minute').html(m);
+	$('#second').html(s);
+}
+setInterval(GetRTime,0);
+</script>
+</script>
+
+<p style="
+position:fixed;
+font-size:.1rem;
+color:#fff;
+text-align:center;
+width:100%;
+top:98%;
+">技术支持：最派传播</p>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+wx.config({
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx9a3af876f7cca784', // 必填，公众号的唯一标识
+    timestamp: 1489074801, // 必填，生成签名的时间戳
+    nonceStr: 'IrTlsfcqH6iCTwuD', // 必填，生成签名的随机串
+    signature: '891593057cdbaeaa00eb1795eee9411517ccd511',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+wx.ready(function(){
+  wx.hideMenuItems({
+    menuList: ["menuItem:copyUrl",//复制链接
+                     "menuItem:originPage",//原网页
+                     "menuItem:readMode",//阅读模式
+                     "menuItem:openWithQQBrowser",//在QQ浏览器中打开
+                     "menuItem:openWithSafari"//在Safari中打开
+                   ] // 要隐藏的菜单项
+  });
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	wx.onMenuShareAppMessage({
+	    title: '老林参与了“我消费、你助力”活动，赶紧来助他拿百万豪礼吧！', // 分享标题
+	    desc: '三正地产20年 感恩回馈送豪礼！', // 分享描述
+	    link: 'http://www.szkinglong.net//szrsgg/index.php?m=Home&c=User&a=home&helpUid=59', // 分享链接
+	    imgUrl: 'http://www.szkinglong.net/szrsgg/share.png', // 分享图标
+	    type: '', // 分享类型,music、video或link，不填默认为link
+	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	    success: function () {
+	        // 用户确认分享后执行的回调函数
+	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
+	        // 	if(data.status == 0){
+	        // 		location.reload();
+	        // 	}
+	        // },'json');
+	    },
+	    cancel: function () {
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+	wx.onMenuShareTimeline({
+	    title: '老林参与了“我消费、你助力”活动，赶紧来助他拿百万豪礼吧！', // 分享标题
+	    link: 'http://www.szkinglong.net//szrsgg/index.php?m=Home&c=User&a=home&helpUid=59', // 分享链接
+	    imgUrl: 'http://www.szkinglong.net/szrsgg/share.png', // 分享图标
+	    success: function () {
+	        // 用户确认分享后执行的回调函数
+	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
+	        // 	if(data.status == 0){
+	        // 		location.reload();
+	        // 	}
+	        // },'json');
+	    },
+	    cancel: function () {
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+});
+</script>
+</body>
+</html>
