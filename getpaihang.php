@@ -6,6 +6,7 @@ header("Content-Type: text/html;charset=utf-8");
 $a['a'] = 12;
 $a['b'] = 12;
 $a['c'] = 12;
+var_dump($a);
 var_dump(json_encode($a));
 exit;
 
