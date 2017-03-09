@@ -173,8 +173,7 @@ if(!isGet()){
 
 <div class="userinfo">
 	<div class="list-head">
-		<img src="{$z_userinfo['headimgurl']}" alt="">
-		<?php echo $z_userinfo['headimgurl'];?>
+		<img src="<?php echo $z_userinfo['headimgurl'];?>" alt="">
 	</div>
 	<p class="txt" style="font-weight:bold;"><?php echo "{$z_userinfo['nickname']}"; ?></p>
 	<p class="txt">排名：第709位</p>
