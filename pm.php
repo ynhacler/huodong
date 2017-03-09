@@ -164,7 +164,7 @@ $signPackage = $jssdk->GetSignPackage();
                 	//alert(JSON.stringify(me));
                   if(data.info.length == 0){
                     // 锁定
-                    //me.lock();
+                    me.lock();
                     // 无数据
                     me.noData();
                   }else{
@@ -190,6 +190,7 @@ $signPackage = $jssdk->GetSignPackage();
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
                   me.resetload();
+                  me.unlock();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
