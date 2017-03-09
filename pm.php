@@ -32,7 +32,7 @@ $zzh = new weixinController();
 		$re = select_DB_2($sqlz);
 		$ii = 1;
 		foreach ($re as $key => $value) { 
-			echo "<table border="1">";
+			echo "<table border='1'>";
 			echo "<tr>";
 			  echo "<td><img src='{$value['headimgurl']}' /></td>";
 			  echo "<td>{$value['nickname']}</td>";

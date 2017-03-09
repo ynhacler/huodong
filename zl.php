@@ -80,8 +80,8 @@ $lizhisql = "select praised_num from event_user a,wx_user b where a.wx_id=b.id a
 $re123 = select_DB_2($lizhisql);
 echo "力值：{$re123[0]["praised_num"]}<br/>";
 
-$paiming = 999;//select_DB_2("123");
-echo "排名：{$paiming}";
+//$paiming = 999;//select_DB_2("123");
+//echo "排名：{$paiming}";
 ?>
 <br/>
 ==================<br/>
