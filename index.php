@@ -3,8 +3,8 @@ require_once 'getcode.php';
 require_once 'jsSDK.php';
 $jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
 $signPackage = $jssdk->GetSignPackage();
-$zzh = new weixinController();
-
+//$zzh = new weixinController();
+echo 123;
 ?>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@ $zzh = new weixinController();
 		<a href="/wd.php"><button class="btn-send1"></button></a>
 		<a href="/pm.php"><button class="btn-send4"></button></a>
 	</div>
-	
+
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
 wx.config({
