@@ -34,9 +34,10 @@ $zzh = new weixinController();
 		foreach ($re as $key => $value) { 
 			echo "<table border='1'>";
 			echo "<tr>";
+			  echo "<td>openid：{$value['openid']}</td>";
 			  echo "<td><img src='{$value['headimgurl']}' /></td>";
 			  echo "<td>{$value['nickname']}</td>";
-			  echo "<td>{$value['praised_num']}</td>";
+			  echo "<td>力值：{$value['praised_num']}</td>";
 			  echo "<td>排名：{$ii}</td>";
 			echo "</tr>";
 			echo "</table>";
