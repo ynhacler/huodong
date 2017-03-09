@@ -115,9 +115,10 @@ $signPackage = $jssdk->GetSignPackage();
                 dataType: 'json',
                 success: function(data){
                 	//var me = $('.content-block');
-                	$('.content-block').dropload(function(){
-                		me.resetload();
-                  		//me.unlock();
+                	$('.content-block').dropload({
+                		loadDownFn : function(me){
+                			me.resetload();
+                		}
                 	});
                   if(data.info.length == 0){
                     // 锁定
