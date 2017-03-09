@@ -88,7 +88,7 @@ header("Content-Type: text/html;charset=utf-8");
 		    echo "</div>";
 		    echo "<span class='list-name'>{$value['nickname']}</span>";
 		    echo "<div class='list-fen-rank'><br>助力值<br><br>{$value['praised_num']}</div>";
-		    echo "<div class="list-rank">{$ii}}</div>";
+		    echo "<div class='list-rank'>{$ii}</div>";
 		    echo "</a>";
 		    echo "</li>";
 		    $ii++;
