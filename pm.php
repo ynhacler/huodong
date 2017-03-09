@@ -66,8 +66,8 @@ $signPackage = $jssdk->GetSignPackage();
   }
 </style>
 <body class="rank-bg" style="padding-top:1.2rem;">
-	<p display="inline-block;">礼物排行：</p>
-	<select name=""> 
+	<p class="rank-list">礼物排行：</p>
+	<select name="ss" id="ss" class="rank-list"> 
 		<?php
 			require_once 'common.php';
 			$re = select_DB_2("select id,title from gift;");
