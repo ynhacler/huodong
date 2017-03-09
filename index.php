@@ -4,7 +4,6 @@ require_once 'jsSDK.php';
 $jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
 $signPackage = $jssdk->GetSignPackage();
 //$zzh = new weixinController();
-echo 123;
 ?>
 <!DOCTYPE html>
 <html>
