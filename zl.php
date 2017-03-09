@@ -19,7 +19,7 @@ if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 $jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
 $signPackage = $jssdk->GetSignPackage();
 
-//$zzh = new weixinController('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+$zzh = new weixinController('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 //echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $z_userinfo = json_decode($zzh->userInfo,true);
 $z_userinfo = $z_userinfo[0];
@@ -223,11 +223,10 @@ $re123 = select_DB_2($lizhisql);
 <script>
 var helping = false;
 function help(){
-	alert(123);
 	if(!helping){
 		helping = true;
-		var url = "http://www.uhit.me/zhuta.php?uu=<?php echo $_SERVER['QUERY_STRING'];?>&uud=<?php echo $openid;?>";
-		$.get(url,{function(data){
+		var url = "/zhuta.php?uu=<?php echo $_SERVER['QUERY_STRING'];?>&uud=<?php echo $openid;?>";
+		$.get(url,function(data){
 			alert(data.msg);
 			helping = false;
 			location.reload();
