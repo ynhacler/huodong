@@ -226,6 +226,7 @@ function help(){
 	if(!helping){
 		helping = true;
 		var url = "/zhuta.php?uu=<?php echo $_SERVER['QUERY_STRING'];?>&uud=<?php echo $openid;?>";
+		alert(url);
 		$.get(url,function(data){
 			alert(data.msg);
 			helping = false;
