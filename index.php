@@ -25,9 +25,9 @@ $zzh = new weixinController();
 </head>
 <body class="index-bg">
 	<div style="    position: absolute;    top: 2.5rem;    left: .5rem;">
-		<a href="/cy.php"><button class="btn-send3"></button></a>
+		<a href="/cy.php"><button class="btn-send1"></button></a>
 		<a href="/hd.php"><button class="btn-send2"></button></a>
-		<a href="/wd.php"><button class="btn-send1"></button></a>
+		<a href="/wd.php"><button class="btn-send3"></button></a>
 		<a href="/pm.php"><button class="btn-send4"></button></a>
 	</div>
 
