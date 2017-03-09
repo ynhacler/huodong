@@ -37,6 +37,56 @@ if($re12[0]["bb"] == '1'){
 	<script type="text/javascript" src="/pub/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="/pub/rem.js"></script>
   <title>参加活动</title>
+  <style>
+  .lin-txt{
+    font-size: .18rem;
+    padding-left: .2rem;
+    height: .3rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+  }
+  .wit-bg{
+    background-color: #fff;
+  }
+  .lin-ipt{
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    font-size: .18rem;
+    position: relative;
+    top: -.02rem;
+    color: #268c9f;
+  }
+  .botm-border{
+    border-bottom:1px solid #efefef;
+  }
+  .line{
+    margin-left: .28rem;
+    width: 3.5rem;
+    border-bottom:1px solid #d1d1d1;
+  }
+  .sub{
+    height: 1rem;
+    padding: .2rem;
+    text-align: center;
+  }
+  .sub-btn{
+    background-color: rgb(255, 0, 0);
+    color: #fff;
+    font-size: .2rem;
+    width: 3.5rem;
+    height: .6rem;
+    border-radius: .03rem;
+  }
+  input{
+    line-height: normal; /* for non-ie */
+  }
+  .t1{
+    font-size: .15rem;
+    line-height: .3rem;
+    text-indent: .3rem;
+  }
+</style>
 </head>
 <body style="background-color:rgb(242,242,242);">
   <div style="height:100%;margin-top:.1rem;">
