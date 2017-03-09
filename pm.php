@@ -81,6 +81,7 @@ $signPackage = $jssdk->GetSignPackage();
   
   </ul>
   <div class="color-block content-block" style="top: 93%;width: 100%;margin-left: 0rem;margin-right: 0rem;position: fixed;"></div>
+
   <script type="text/javascript" src="/pub/dropload.min.js"></script>
   <p style="display: none;" value='1' id="z_next" name="z_next"></p>
 	<script>
@@ -94,7 +95,7 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
-                  if(data.lists.length == 0){
+                  if(data.info.length == 0){
                     // 锁定
                     me.lock();
                     // 无数据
