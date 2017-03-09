@@ -66,15 +66,14 @@ $signPackage = $jssdk->GetSignPackage();
   }
 </style>
 <body class="rank-bg" style="padding-top:1.2rem;">
-	<p class="rank-list">礼物排行：</p>
-	<select name="ss" id="ss" class="rank-list"> 
+	<p>礼物排行：</p>
+	<select name="ss" id="ss"> 
 		<?php
 			require_once 'common.php';
 			$re = select_DB_2("select id,title from gift;");
 			foreach ($re as $key => $value) { 
 				echo "<option value='{$value['id']}'>{$value['title']}</option>";
 			}
-
 		?>
 	</select>
 
@@ -100,7 +99,54 @@ $signPackage = $jssdk->GetSignPackage();
   </ul>
   <div class="color-block content-block" style="top: 93%;width: 100%;margin-left: 0rem;margin-right: 0rem;position: fixed;"></div>
   <script type="text/javascript" src="/pub/dropload.min.js"></script>
-	
+  
+	<script>
+  $(function(){
+    var url = "/szrsgg/index.php?m=Home&c=User&a=nextpage";
+    $('.content-block').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                success: function(data){
+                  if(data.lists.length == 0){
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                  }else{
+                    var result = '';
+                    url = data.url;
+                    for(x in data.lists){
+                      var value = data.lists[x];
+                      result += '      <li>' +
+                              '<a href="'+value.url+'">' +
+                                '<div class="list-head">' +
+                                  '<img src="'+value.head+'" alt="">' +
+                                '</div>' +
+                                '<span class="list-name">'+value.name+'</span>' +
+                                '<div class="list-fen-rank"><br>助力值<br><br>'+value.fen+'</div>' +
+                                '<div class="list-rank">'+value.rank+'</div>' +
+                              '</a>'
+                            '</li>';
+                    }
+                  }
+                  $('.content-lists-main').append(result);
+                  // 每次数据加载完，必须重置
+                  me.resetload();
+                },
+                error: function(xhr, type){
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                    $('.dropload-refresh').html('系统忙，请稍后再试');
+                }
+            });
+        }
+    });
+  });
+  </script>
 
 	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
