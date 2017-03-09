@@ -141,11 +141,11 @@ $signPackage = $jssdk->GetSignPackage();
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
-                  me.resetload();
+                  //me.resetload();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
-                    me.resetload();
+                    //me.resetload();
                     $('.dropload-refresh').html('系统忙，请稍后再试');
                 }
             });
