@@ -118,7 +118,7 @@ $signPackage = $jssdk->GetSignPackage();
                             '</li>';
                         nextzhi++;
                     }
-                    $("#z_next").value = nextzhi;
+                    $("#z_next").val(nextzhi);
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
