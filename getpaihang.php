@@ -9,11 +9,11 @@ if(is_array($_GET) && count($_GET)>0 && isset($_GET["next"]) && isset($_GET["jia
 	$jiang = $_GET["jiang"];
 
 	$sqlz = "select b.openid ,b.nickname ,b.headimgurl,a.praised_num from event_user a,wx_user b where b.id=a.wx_id and a.gift_id='{$jiang}' order by a.praised_num desc limit {$next_num},5;";
-	echo $sqlz;
+	//echo $sqlz;
 	$re = select_DB_2($sqlz);
 	foreach ($re as $key => $value) {
 	}
-	var_dump($re);
+	var_dump(json_encode($re));
 	exit;
 }else{
 	echo 'error';
