@@ -17,7 +17,7 @@ if(is_array($_GET) && count($_GET)>0 && isset($_GET["uu"]) && isset($_GET["uud"]
 	$re22 = select_DB_2($er2);
 	
 	if($re22[0]["aa"] != 1 || $re11[0]["aa"] != 1){
-		$aa['msg'] = "ER2";
+		$aa['msg'] = "ER22";
 		echo json_encode($aa);
 		exit;
 	}
