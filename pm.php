@@ -161,7 +161,7 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
-                	alert(me);
+                	alert(JSON.stringify(me));
                   if(data.info.length == 0){
                     // 锁定
                     me.lock();
