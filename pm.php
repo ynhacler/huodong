@@ -143,6 +143,7 @@ $signPackage = $jssdk->GetSignPackage();
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
                   gogo.noData(false);
+                  gogo.unlock();
                   gogo.resetload();
                 },
                 error: function(xhr, type){
@@ -186,6 +187,7 @@ $signPackage = $jssdk->GetSignPackage();
                               '</a>'+
                             '</li>';
                         nextzhi++;
+                        
                     }
                     $("#z_next").val(nextzhi);
                   }
