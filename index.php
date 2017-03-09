@@ -16,4 +16,5 @@ $zzh = new weixinController();
 	<a href="http://www.uhit.me/pm.php">助力排行</a>
 </body>
 test
+test123
 </html>
