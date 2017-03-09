@@ -64,10 +64,27 @@ $signPackage = $jssdk->GetSignPackage();
     width: 1.2rem;
     display: inline-block;
   }
+    .lin-ipt{
+    display: inline-block;
+    height: 100%;
+    width: 70%;
+    font-size: .18rem;
+    position: relative;
+    top: -.02rem;
+    color: #268c9f;
+  }
+    .lin-txt{
+    font-size: .18rem;
+    padding-left: .2rem;
+    height: .3rem;
+    padding-top: .2rem;
+    padding-bottom: .2rem;
+  }
 </style>
 <body class="rank-bg" style="padding-top:1.2rem;">
-	<p>礼物排行：</p>
-	<select name="ss" id="ss"> 
+	<p class="lin-txt">
+	<span>礼物排行：</span>
+	<select name="ss" id="ss" class="lin-ipt"> 
 		<?php
 			require_once 'common.php';
 			$re = select_DB_2("select id,title from gift;");
@@ -76,6 +93,7 @@ $signPackage = $jssdk->GetSignPackage();
 			}
 		?>
 	</select>
+	</p>
 
   <ul class="rank-list content-lists-main">
   
