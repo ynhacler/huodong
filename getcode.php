@@ -29,7 +29,7 @@ require_once 'common.php';
                 if (!empty($wxSign)) {
                     //如果存在，则从DB里取出缓存了的数据
                     $userInfo = select_DB("select * from wx_user where wxSign = '{$wxSign}';");
-                    var_dump($userInfo);
+                    var_dump($userInfo['openid']);
                     exit;
                     if (!empty($userInfo)) {
                         //获取用户的openid
