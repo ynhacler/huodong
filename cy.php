@@ -16,7 +16,7 @@ $openid = $z_userinfo['openid'];
 $sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
 //echo $sql12;
 $re12 = select_DB_2($sql12);
-if($re12[0]["bb"] == '1'){
+if($re12[0]["bb"] >= '1'){
 	redirect("/zl.php?uu={$openid}");
 }
 ?>
