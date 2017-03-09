@@ -22,9 +22,12 @@ $zzh = new weixinController();
   <title>首页</title>
 </head>
 <body>
-	<a href="http://www.uhit.me/wd.php">礼物设置</a><br/>
-	<a href="http://www.uhit.me/hd.php">活动规则</a><br/>
-	<a href="http://www.uhit.me/cy.php">我要参与</a><br/>
-	<a href="http://www.uhit.me/pm.php">助力排行</a>
+	<body class="index-bg">
+	<div style="    position: absolute;    top: 2.5rem;    left: .5rem;">
+		<a href="/wd.php">礼物设置<button class="btn-send1"></button></a>
+		<a href="/hd.php">活动规则<button class="btn-send2"></button></a>
+		<a href="/cy.php">我要参与<button class="btn-send3"></button></a>
+		<a href="/pm.php">助力排行<button class="btn-send4"></button></a>
+	</div>
 </body>
 </html>
