@@ -114,7 +114,7 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
-                	var me = $('.content-block');
+                	//var me = $('.content-block');
                   if(data.info.length == 0){
                     // 锁定
                     me.lock();
@@ -142,7 +142,7 @@ $signPackage = $jssdk->GetSignPackage();
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
-                  me.resetload();
+                  //me.resetload();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
@@ -161,6 +161,7 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
+                	alert(me);
                   if(data.info.length == 0){
                     // 锁定
                     me.lock();
