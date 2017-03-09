@@ -184,7 +184,7 @@ $re123 = select_DB_2($lizhisql);
 //$paiming = 999;//select_DB_2("123");
 //echo "排名：{$paiming}";
 ?>
-  <div class="list-fen"><br>助力值<br><br><font style="font-size:.2rem;font-weight:bold;"><?php echo "力值：{$re123[0]["praised_num"]}";?></font></div>
+  <div class="list-fen"><br>助力值<br><br><font style="font-size:.2rem;font-weight:bold;"><?php echo "{$re123[0]["praised_num"]}";?></font></div>
 </div>
 
 
