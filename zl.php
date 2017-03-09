@@ -2,8 +2,7 @@
 require_once 'getcode.php';
 require_once 'common.php';
 header("Content-Type: text/html;charset=utf-8"); 
-echo $_SERVER['REQUEST_METHOD'];
-exit;
+
 //检查uu是否存在
 if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 {
@@ -16,6 +15,7 @@ if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 }
 
 $zzh = new weixinController('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
+echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $z_userinfo = json_decode($zzh->userInfo,true);
 $z_userinfo = $z_userinfo[0];
 
@@ -52,7 +52,7 @@ if(!isGet()){
 		$u_file_name = 'no_upload_img';
 	}
 	
-	  $u_id = '1';//$z_userinfo['id']
+	  $u_id = $z_userinfo['id'];
 	  $u_name = $_POST['user_name'];
 	  $u_phone = $_POST['user_phone'];
 	  $u_content = $_POST['user_content'];
@@ -83,6 +83,7 @@ echo "力值：{$re123[0]["praised_num"]}<br/>";
 $paiming = 999;//select_DB_2("123");
 echo "排名：{$paiming}";
 ?>
+<br/>
 ==================<br/>
 	<a href="http://www.uhit.me/zhuta.php?uu=<?php echo $_SERVER['QUERY_STRING'];?>&uud=<?php echo $openid;?>">助它一臂之力</a><br/>
 	<a href="http://www.uhit.me/wd.php">奖品设置</a><br/>
