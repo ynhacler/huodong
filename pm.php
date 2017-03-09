@@ -142,10 +142,12 @@ $signPackage = $jssdk->GetSignPackage();
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
+                  gogo.noData(false);
                   gogo.resetload();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
+                    gogo.noData(false);
                     gogo.resetload();
                     $('.dropload-refresh').html('系统忙，请稍后再试');
                 }
@@ -189,6 +191,7 @@ $signPackage = $jssdk->GetSignPackage();
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
+
                   me.resetload();
                   //me.unlock();
                 },
