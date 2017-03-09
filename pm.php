@@ -78,37 +78,20 @@ $signPackage = $jssdk->GetSignPackage();
 	</select>
 
   <ul class="rank-list content-lists-main">
-  <?php
-		$sqlz = "select b.openid ,b.nickname ,b.headimgurl,a.praised_num from event_user a,wx_user b where b.id=a.wx_id and a.gift_id=1 order by a.praised_num desc;";
-		$re = select_DB_2($sqlz);
-		$ii = 1;
-		foreach ($re as $key => $value) { 
-			 echo "<li>";
-		    echo "<a href='/zl.php?uu={$value['openid']}'>";
-		    echo "<div class='list-head'>";
-		    echo "<img src='{$value['headimgurl']}' alt=''>";
-		    echo "</div>";
-		    echo "<span class='list-name'>{$value['nickname']}</span>";
-		    echo "<div class='list-fen-rank'><br>助力值<br><br>{$value['praised_num']}</div>";
-		    echo "<div class='list-rank'>{$ii}</div>";
-		    echo "</a>";
-		    echo "</li>";
-		    $ii++;
-		}
-	?>
+  
   </ul>
   <div class="color-block content-block" style="top: 93%;width: 100%;margin-left: 0rem;margin-right: 0rem;position: fixed;"></div>
   <script type="text/javascript" src="/pub/dropload.min.js"></script>
-  <p style="display: none;" value='5' id="z_next" name="z_next"></p>
+  <p style="display: none;" value='1' id="z_next" name="z_next"></p>
 	<script>
+
   $(function(){
-    var url = "/szrsgg/index.php?m=Home&c=User&a=nextpage";
     $('.content-block').dropload({
         scrollArea : window,
         loadDownFn : function(me){
             $.ajax({
                 type: 'GET',
-                url: url,
+                url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
                   if(data.lists.length == 0){
@@ -118,20 +101,23 @@ $signPackage = $jssdk->GetSignPackage();
                     me.noData();
                   }else{
                     var result = '';
-                    url = data.url;
-                    for(x in data.lists){
-                      var value = data.lists[x];
+                    url = data.msg;
+                    var nextzhi = $("#z_next").attr("value");
+                    for(x in data.info){
+                      var value = data.info[x];
                       result += '      <li>' +
-                              '<a href="'+value.url+'">' +
+                              '<a href="/zl.php?uu='+value.openid+'">' +
                                 '<div class="list-head">' +
-                                  '<img src="'+value.head+'" alt="">' +
+                                  '<img src="'+value.headimgurl+'" alt="">' +
                                 '</div>' +
-                                '<span class="list-name">'+value.name+'</span>' +
-                                '<div class="list-fen-rank"><br>助力值<br><br>'+value.fen+'</div>' +
-                                '<div class="list-rank">'+value.rank+'</div>' +
+                                '<span class="list-name">'+value.nickname+'</span>' +
+                                '<div class="list-fen-rank"><br>助力值<br><br>'+value.praised_num+'</div>' +
+                                '<div class="list-rank">'+nextzhi+'</div>' +
                               '</a>'
                             '</li>';
+                        nextzhi++;
                     }
+                    $("#z_next").value = nextzhi;
                   }
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
@@ -144,7 +130,7 @@ $signPackage = $jssdk->GetSignPackage();
                 }
             });
         }
-    });
+    });//drop_end
   });
   </script>
 
