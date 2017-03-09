@@ -133,7 +133,7 @@ $signPackage = $jssdk->GetSignPackage();
                                 '<span class="list-name">'+value.nickname+'</span>' +
                                 '<div class="list-fen-rank"><br>助力值<br><br>'+value.praised_num+'</div>' +
                                 '<div class="list-rank">'+nextzhi+'</div>' +
-                              '</a>'
+                              '</a>'+
                             '</li>';
                         nextzhi++;
                     }
