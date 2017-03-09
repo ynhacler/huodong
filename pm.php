@@ -114,7 +114,8 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
-                	gg.resetload();
+                	gogo.resetload();
+                	gogo.noData(false);
                   if(data.info.length == 0){
                     // 锁定
                     //me.lock();
