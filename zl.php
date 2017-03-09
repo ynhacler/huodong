@@ -189,7 +189,7 @@ $re123 = select_DB_2($lizhisql);
 
 
 	<p style="text-align:center;">
-		<a id="help" href="javascript:;" onclick="help(50076)"><button class="btn-help"></button></a><!--助力-->
+		<a id="help" href="javascript:;" onclick="help()"><button class="btn-help"></button></a><!--助力-->
 		<a href="javascript:;" onclick="alert('点击右上角分享')"><button class="btn-find"></button></a><!--分享-->
 	</p>
 
@@ -222,7 +222,8 @@ $re123 = select_DB_2($lizhisql);
 
 <script>
 var helping = false;
-function help(helpUid){
+function help(){
+	alert(123);
 	if(!helping){
 		helping = true;
 		var url = "http://www.uhit.me/zhuta.php?uu=<?php echo $_SERVER['QUERY_STRING'];?>&uud=<?php echo $openid;?>";
