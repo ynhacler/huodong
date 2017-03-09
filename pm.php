@@ -162,9 +162,9 @@ $signPackage = $jssdk->GetSignPackage();
                 success: function(data){
                   if(data.info.length == 0){
                     // 锁定
-                    me.lock();
+                    //me.lock();
                     // 无数据
-                    me.noData();
+                    //me.noData();
                   }else{
                     var result = '';
                     url = data.msg;
