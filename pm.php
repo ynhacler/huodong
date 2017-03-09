@@ -115,7 +115,7 @@ $signPackage = $jssdk->GetSignPackage();
                 dataType: 'json',
                 success: function(data){
                 	gogo.resetload();
-                	gogo.noData(false);
+                	//gogo.noData(false);
                   if(data.info.length == 0){
                     // 锁定
                     //me.lock();
