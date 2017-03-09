@@ -35,7 +35,7 @@ echo 123;
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
 wx.config({
-    debug: false, 
+    debug: true, 
     appId: '<?php echo $signPackage["appId"];?>',
     timestamp: '<?php echo $signPackage["timestamp"];?>',
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
@@ -43,6 +43,7 @@ wx.config({
     jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 });
 wx.ready(function(){
+
   wx.hideMenuItems({
     menuList: ["menuItem:copyUrl",//复制链接
                      "menuItem:originPage",//原网页

@@ -77,3 +77,6 @@ https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx8e339c8f60f11a7f&secre
   &user_imgfile=5bd6ce6033922fc84bf49c711d7119c3_b.jpeg
 
   &user_gift_id=5
+
+  文件权限最大化
+  创建两个json文件
