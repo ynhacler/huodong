@@ -31,8 +31,7 @@ $zzh = new weixinController();
 		<a href="/wd.php"><button class="btn-send1"></button></a>
 		<a href="/pm.php"><button class="btn-send4"></button></a>
 	</div>
-
-
+	
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
 wx.config({
