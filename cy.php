@@ -3,7 +3,10 @@ require_once 'getcode.php';
 require_once 'common.php';
 
 header("Content-Type: text/html;charset=utf-8"); 
-$zzh = new weixinController();
+require_once 'jsSDK.php';
+$jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
+$signPackage = $jssdk->GetSignPackage();
+//$zzh = new weixinController();
 
 //判断是否参加过
 $z_userinfo = json_decode($zzh->userInfo,true);
@@ -77,7 +80,7 @@ if($re12[0]["bb"] == '1'){
 	</select> 
 	</p>
     <div class="line"></div>
-    
+
 	<br><br>
 	<p class="sub">
       <button class="sub-btn" type="submit">开始助力</button>
