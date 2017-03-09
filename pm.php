@@ -114,12 +114,7 @@ $signPackage = $jssdk->GetSignPackage();
                 url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
-                	//var me = $('.content-block');
-                	$('.content-block').dropload({
-                		loadDownFn : function(me){
-                			me.resetload();
-                		}
-                	});
+                	gg.resetload();
                   if(data.info.length == 0){
                     // 锁定
                     //me.lock();
@@ -158,7 +153,7 @@ $signPackage = $jssdk->GetSignPackage();
 	});
 
   	//下拉
-    $('.content-block').dropload({
+    var gogo = $('.content-block').dropload({
         scrollArea : window,
         loadDownFn : function(me){
             $.ajax({
