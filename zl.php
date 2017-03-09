@@ -15,7 +15,7 @@ if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 }
 
 $zzh = new weixinController('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
-echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+//echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 $z_userinfo = json_decode($zzh->userInfo,true);
 $z_userinfo = $z_userinfo[0];
 
