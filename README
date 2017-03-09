@@ -1,1 +1,79 @@
-123
+AppSecret:
+82e96223f93106c01b6625d82f99cacf
+
+AppID:
+wx47521ce13cf19427
+
+测试号信息:
+appID
+wx8e339c8f60f11a7f
+appsecret
+86f59b665cdfcd49855ba30ad063f820
+
+
+linux root l55621-
+Apache配置文件路径：/etc/httpd/conf/httpd.conf
+MySQL配置文件路径： /etc/my.cnf
+PHP配置文件路径：     /etc/php.ini
+/usr/sbin/redis-server /etc/redis.conf
+
+文档地址
+https://mp.weixin.qq.com/wiki
+
+获取access_token
+https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx8e339c8f60f11a7f&secret=86f59b665cdfcd49855ba30ad063f820
+
+获取关注者列表
+https://api.weixin.qq.com/cgi-bin/user/get?access_token=R1THHXgZtHmAivAiefwlQ51HDHCYTko_RMfdxunOhymjf_4uMajU2u8aUgSREymcbjIgPXJILNWLrYRmZZSjXegzg2t2uRGaSJEAOYzXhqkKZJgACABQA&next_openid=NEXT_OPENID
+
+获取用户（关注过）基本信息
+https://api.weixin.qq.com/cgi-bin/user/info?access_token=R1THHXgZtHmAivAiefwlQ51HDHCYTko_RMfdxunOhymjf_4uMajU2u8aUgSREymcbjIgPXJILNWLrYRmZZSjXegzg2t2uRGaSJEAOYzXhqkKZJgACABQA&openid=oogH90T3dzRPfEgfK2c376gbCl6I&lang=zh_CN 
+
+
+以snsapi_userinfo为scope发起的网页授权，是用来获取用户的基本信息的。但这种授权需要用户手动同意，并且由于用户同意过，所以无须关注，就可在授权后获取该用户的基本信息。 
+
+微信网页授权是通过OAuth2.0机制实现的，在用户授权给公众号后，公众号可以获取到一个网页授权特有的接口调用凭证（网页授权access_token），通过网页授权access_token可以进行授权后接口调用，如获取用户基本信息； 
+
+
+phpize
+./configure -with-php-config=/usr/bin/php-config
+
+
+最终的访问地址：
+https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx8e339c8f60f11a7f&redirect_uri=http%3a%2f%2fwww.uhit.me%2findex.php&response_type=code&scope=snsapi_userinfo&state=123&connect_redirect=1#wechat_redirect
+
+
+appID
+
+appsecret
+
+
+
+https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx8e339c8f60f11a7f&secret=86f59b665cdfcd49855ba30ad063f820&code=051aiIsc0nQApv13JLrc0KpVsc0aiIs2&grant_type=authorization_code
+
+https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx8e339c8f60f11a7f&secret=86f59b665cdfcd49855ba30ad063f820&code=021JC80o0mGm7q1S2SZn0JY00o0JC80q&grant_type=authorization_code
+
+ ["openid"]=> string(28) "oogH90T3dzRPfEgfK2c376gbCl6I"
+ ["nickname"]=> string(9) "红蚂蚁"  
+ ["headimgurl"]=> string(119) "http://wx.qlogo.cn/mmopen/XSwONgGS9DiaXiaEZwQnGBN8Lpw6rTlMmBiaHBbpA2CM79vdZM7sIuULgq74wbiaSkQoicMQzjsW1BoKhMUbU9HcQpA/0"
+ ["wx_id"]=> string(28) "oogH90T3dzRPfEgfK2c376gbCl6I" 
+
+
+
+ INSERT INTO wx_user (wxSign,openid,nickname,headimgurl) VALUES ('8cd5c8eb835aa51f', 'oogH90T3dzRPfEgfK2c376gbCl6I' '红蚂蚁', 'http://wx.qlogo.cn/mmopen/XSwONgGS9DiaXiaEZwQnGBN8Lpw6rTlMmBiaHBbpA2CM79vdZM7sIuULgq74wbiaSkQoicMQzjsW1BoKhMUbU9HcQpA/0');
+
+  INSERT INTO wx_user (wxSign,openid,nickname,headimgurl) VALUES ('8cd5c8eb835aa51f', 'oogH90T3dzRPfEgfK2c376gbCl6I' '红蚂蚁', 'http://wx.qlogo.cn/mmopen/XSwONgGS9DiaXiaEZwQnGBN8Lpw6rTlMmBiaHBbpA2CM79vdZM7sIuULgq74wbiaSkQoicMQzjsW1BoKhMUbU9HcQpA/0');
+
+
+
+  http://www.uhit.me/zl.php?
+
+  user_name=Mickey
+
+  &user_phone=Mouseddd
+
+  &user_content=sss
+
+  &user_imgfile=5bd6ce6033922fc84bf49c711d7119c3_b.jpeg
+
+  &user_gift_id=5
