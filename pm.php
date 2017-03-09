@@ -66,7 +66,7 @@ $signPackage = $jssdk->GetSignPackage();
   }
 </style>
 <body class="rank-bg" style="padding-top:1.2rem;">
-	<p>礼物排行：</p>
+	<p display="inline-block;">礼物排行：</p>
 	<select name=""> 
 		<?php
 			require_once 'common.php';
