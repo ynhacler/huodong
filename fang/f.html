@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection"content="telephone=no, email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+<!-- <link rel="stylesheet" href="/szrsgg/Public/Home/css/style.css?ver=XENOX"> -->
+<link rel="stylesheet" href="/szrsgg/Public/Home/css/style.css">
+<script type="text/javascript" src="/szrsgg/Public/Home/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/szrsgg/Public/Home/js/rem.js"></script>
+<title>排行榜</title>
+</head>
+
+	<link rel="stylesheet" href="/szrsgg/Public/Home/css/dropload.css">
+<style>
+.dropload-up, .dropload-down{
+	top:-.3rem;
+}
+</style>
+<style>
+  .rank-list li{
+    float: left;
+    width: 3.3rem;
+    height: .7rem;
+    background-color: rgb(254,248,174);
+    border-radius: .1rem;
+    margin-left: .45rem;
+    margin-bottom: .2rem;
+  }
+  .list-head{
+    display: inline-block;
+    width: .7rem;
+    height: .7rem;
+    margin-left: .2rem;
+    float: left;
+  }
+  .list-head img{
+    width: 80%;
+    border-radius: .3rem;
+    margin-top: .1rem;
+  }
+  .list-name{
+    font-size: .2rem;
+    color: red;
+    font-weight: bold;
+    position: relative;
+    top: -.2rem;
+    width: 1.2rem;
+    display: inline-block;
+  }
+</style>
+<body class="rank-bg" style="padding-top:1.2rem;">
+  <ul class="rank-list content-lists-main">
+    <li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=19503">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM6F6ayxn1VjuQWVORKytUstxmEULzqGIJJyKl2HW8yG6f5JpkiagyTd8HdgqryIh3YkJ8GAIEj6ru3kc5y4XmENjf3hsU7RcrC4/0" alt="">
+          </div>
+          <span class="list-name">游文慧</span>
+          <div class="list-fen-rank"><br>助力值<br><br>887</div>
+          <div class="list-rank">1</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=1139">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/Fyicg9XLic2D8llwcveBD3lG2t3dzlC3YNr6dp0gWSWfPiaXW4B3GXRDzjxiaBficEibR9t8MHpkegdkm3IwouNCmOYFsCbQIR6ann/0" alt="">
+          </div>
+          <span class="list-name">勇痕</span>
+          <div class="list-fen-rank"><br>助力值<br><br>874</div>
+          <div class="list-rank">2</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=107">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/PtmsNLrQDfGWexgg6qxCokVNkBicLh22y8ZNPSYRWeLB1EqOR8vicGSLsChNaTzRoB23DuUHO501OibNqoRGsVYgaHBF6ibdCumia/0" alt="">
+          </div>
+          <span class="list-name">zhj</span>
+          <div class="list-fen-rank"><br>助力值<br><br>857</div>
+          <div class="list-rank">3</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=16918">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/ajNVdqHZLLBib6yujdcL7cDJ4M1j8t0ZYZWW4k7AnBZNWAJiaySk8iaGJRvbFF4KCPvdsEGmQbCkke0DouwOZJCHDajOWa8TNYohEeIL2ZMfRs/0" alt="">
+          </div>
+          <span class="list-name">池海朋-Mr.Sky</span>
+          <div class="list-fen-rank"><br>助力值<br><br>856</div>
+          <div class="list-rank">4</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=17">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/PtmsNLrQDfGXcZryy5iaEeH9qGOv9QlLuQcTtMgBbywMnCWicPsJUaREBn9kCLOxTk4GYaOG7pXbVwVVJEVFUhIOibll4wQyia1N/0" alt="">
+          </div>
+          <span class="list-name">e天剑·李小义</span>
+          <div class="list-fen-rank"><br>助力值<br><br>826</div>
+          <div class="list-rank">5</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=116">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/AjqZqOpBTTNbgwooS7alIhN3hYjjAqUsiaUfyBhZrxzE6Z66NQ1l8LljRosNMMjFAPXLB2dmIciaPvalicSeI2LXFDjZykAuWzj/0" alt="">
+          </div>
+          <span class="list-name">菇大boy</span>
+          <div class="list-fen-rank"><br>助力值<br><br>822</div>
+          <div class="list-rank">6</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=17837">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/1gvL9ficRs1HlC6QibUxb9Cicvb0LJmHNZSmbWaeZf2Yr4YZ7eZKRtHNJ2t7gh8ntANQUoiaUFGdzdbamr7DliaA8GAogy4Vic0nLia/0" alt="">
+          </div>
+          <span class="list-name">凭海临风</span>
+          <div class="list-fen-rank"><br>助力值<br><br>822</div>
+          <div class="list-rank">7</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=27093">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/4S6TNumN5H8cICZK4G8ML2PB0gTNm49pg7Sux1FWCzhQFZkXpfNtxKNqYXZHA1PMicfPRpK7RDUwLXBjiaO3haBicicQoDgibDnJ7/0" alt="">
+          </div>
+          <span class="list-name">Calvinzuo☞IFIT野战拓展</span>
+          <div class="list-fen-rank"><br>助力值<br><br>816</div>
+          <div class="list-rank">8</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=104">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/4S6TNumN5H8OiaJtnULLYHPwicMib2MDcYHibtFmYMFWaibxIck9Tfg5NWfjD8rngibOLeT7qwjSMD1fTfSmMeicSlq70KHZ968bUtC/0" alt="">
+          </div>
+          <span class="list-name">旧梦乱人心-</span>
+          <div class="list-fen-rank"><br>助力值<br><br>810</div>
+          <div class="list-rank">9</div>
+        </a>
+      </li><li>
+        <a href="/szrsgg/index.php?m=Home&c=User&a=home&helpUid=512">
+          <div class="list-head">
+            <img src="http://wx.qlogo.cn/mmopen/Q3auHgzwzM7MBDqbRn3c2KicEeILaibGUwpjmzgCh1Kk5UMStAsicyqA27tBRwcSyLwfvJIBPrdMT7fETO2fvISZkicMqTB9HPJVh9Ghib1xL4Fk/0" alt="">
+          </div>
+          <span class="list-name">THY_</span>
+          <div class="list-fen-rank"><br>助力值<br><br>807</div>
+          <div class="list-rank">10</div>
+        </a>
+      </li>  </ul>
+  <div class="color-block content-block" style="top: 93%;width: 100%;margin-left: 0rem;margin-right: 0rem;position: fixed;"></div>
+  <script type="text/javascript" src="/szrsgg/Public/Home/js/dropload.min.js"></script>
+  <script>
+  $(function(){
+    var url = "/szrsgg/index.php?m=Home&c=User&a=nextpage";
+    $('.content-block').dropload({
+        scrollArea : window,
+        loadDownFn : function(me){
+            $.ajax({
+                type: 'GET',
+                url: url,
+                dataType: 'json',
+                success: function(data){
+                  if(data.lists.length == 0){
+                    // 锁定
+                    me.lock();
+                    // 无数据
+                    me.noData();
+                  }else{
+                    var result = '';
+                    url = data.url;
+                    for(x in data.lists){
+                      var value = data.lists[x];
+                      result += '      <li>' +
+                              '<a href="'+value.url+'">' +
+                                '<div class="list-head">' +
+                                  '<img src="'+value.head+'" alt="">' +
+                                '</div>' +
+                                '<span class="list-name">'+value.name+'</span>' +
+                                '<div class="list-fen-rank"><br>助力值<br><br>'+value.fen+'</div>' +
+                                '<div class="list-rank">'+value.rank+'</div>' +
+                              '</a>'
+                            '</li>';
+                    }
+                  }
+                  $('.content-lists-main').append(result);
+                  // 每次数据加载完，必须重置
+                  me.resetload();
+                },
+                error: function(xhr, type){
+                    // 即使加载出错，也得重置
+                    me.resetload();
+                    $('.dropload-refresh').html('系统忙，请稍后再试');
+                }
+            });
+        }
+    });
+  });
+  </script>
+
+<p style="
+position:fixed;
+font-size:.1rem;
+color:#fff;
+text-align:center;
+width:100%;
+top:98%;
+">技术支持：最派传播</p>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+wx.config({
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx9a3af876f7cca784', // 必填，公众号的唯一标识
+    timestamp: 1489047294, // 必填，生成签名的时间戳
+    nonceStr: 'yaDUln76aBxGz2uF', // 必填，生成签名的随机串
+    signature: 'edb029c82622550d86fcb5b07986ffd677bc9e8d',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+wx.ready(function(){
+  wx.hideMenuItems({
+    menuList: ["menuItem:copyUrl",//复制链接
+                     "menuItem:originPage",//原网页
+                     "menuItem:readMode",//阅读模式
+                     "menuItem:openWithQQBrowser",//在QQ浏览器中打开
+                     "menuItem:openWithSafari"//在Safari中打开
+                   ] // 要隐藏的菜单项
+  });
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	wx.onMenuShareAppMessage({
+	    title: '我消费、你助力，百万奖励大派送！', // 分享标题
+	    desc: '三正地产20年 感恩回馈送豪礼！', // 分享描述
+	    link: 'http://www.szkinglong.net//szrsgg/index.php?m=Home&c=User&a=index', // 分享链接
+	    imgUrl: 'http://www.szkinglong.net/szrsgg/share.png', // 分享图标
+	    type: '', // 分享类型,music、video或link，不填默认为link
+	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	    success: function () {
+	        // 用户确认分享后执行的回调函数
+	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
+	        // 	if(data.status == 0){
+	        // 		location.reload();
+	        // 	}
+	        // },'json');
+	    },
+	    cancel: function () {
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+	wx.onMenuShareTimeline({
+	    title: '我消费、你助力，百万奖励大派送！', // 分享标题
+	    link: 'http://www.szkinglong.net//szrsgg/index.php?m=Home&c=User&a=index', // 分享链接
+	    imgUrl: 'http://www.szkinglong.net/szrsgg/share.png', // 分享图标
+	    success: function () {
+	        // 用户确认分享后执行的回调函数
+	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
+	        // 	if(data.status == 0){
+	        // 		location.reload();
+	        // 	}
+	        // },'json');
+	    },
+	    cancel: function () {
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+<meta name="format-detection"content="telephone=no, email=no" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
+<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
+<!-- <link rel="stylesheet" href="/szrsgg/Public/Home/css/style.css?ver=v8nx2"> -->
+<link rel="stylesheet" href="/szrsgg/Public/Home/css/style.css">
+<script type="text/javascript" src="/szrsgg/Public/Home/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="/szrsgg/Public/Home/js/rem.js"></script>
+<title>首页</title>
+</head>
+
+	<body class="index-bg">
+	<div style="    position: absolute;    top: 2.5rem;    left: .5rem;">
+		<a href="/szrsgg/index.php?m=Home&c=User&a=infoform"><button class="btn-send1"></button></a>
+		<a href="/szrsgg/index.php?m=Home&c=User&a=explain"><button class="btn-send2"></button></a>
+		<a href="/szrsgg/index.php?m=Home&c=User&a=reward"><button class="btn-send3"></button></a>
+		<a href="/szrsgg/index.php?m=Home&c=User&a=rank"><button class="btn-send4"></button></a>
+	</div>
+
+<p style="
+position:fixed;
+font-size:.1rem;
+color:#fff;
+text-align:center;
+width:100%;
+top:98%;
+">技术支持：最派传播</p>
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
+<script>
+wx.config({
+    debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wx9a3af876f7cca784', // 必填，公众号的唯一标识
+    timestamp: 1489047271, // 必填，生成签名的时间戳
+    nonceStr: 'L32OoWnU2xnnuPOi', // 必填，生成签名的随机串
+    signature: 'e2aee0637ba0000262e42583610f75e15ef7816a',// 必填，签名，见附录1
+    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+wx.ready(function(){
+  wx.hideMenuItems({
+    menuList: ["menuItem:copyUrl",//复制链接
+                     "menuItem:originPage",//原网页
+                     "menuItem:readMode",//阅读模式
+                     "menuItem:openWithQQBrowser",//在QQ浏览器中打开
+                     "menuItem:openWithSafari"//在Safari中打开
+                   ] // 要隐藏的菜单项
+  });
+    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+	wx.onMenuShareAppMessage({
+	    title: '我消费、你助力，百万奖励大派送！', // 分享标题
+	    desc: '三正地产20年 感恩回馈送豪礼！', // 分享描述
+	    link: 'http://www.szkinglong.net//szrsgg/index.php?m=Home&c=User&a=index', // 分享链接
+	    imgUrl: 'http://www.szkinglong.net/szrsgg/share.png', // 分享图标
+	    type: '', // 分享类型,music、video或link，不填默认为link
+	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+	    success: function () {
+	        // 用户确认分享后执行的回调函数
+	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
+	        // 	if(data.status == 0){
+	        // 		location.reload();
+	        // 	}
+	        // },'json');
+	    },
+	    cancel: function () {
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+	wx.onMenuShareTimeline({
+	    title: '我消费、你助力，百万奖励大派送！', // 分享标题
+	    link: 'http://www.szkinglong.net//szrsgg/index.php?m=Home&c=User&a=index', // 分享链接
+	    imgUrl: 'http://www.szkinglong.net/szrsgg/share.png', // 分享图标
+	    success: function () {
+	        // 用户确认分享后执行的回调函数
+	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
+	        // 	if(data.status == 0){
+	        // 		location.reload();
+	        // 	}
+	        // },'json');
+	    },
+	    cancel: function () {
+	        // 用户取消分享后执行的回调函数
+	    }
+	});
+});
+</script>
+</body>
+</html>
