@@ -6,7 +6,7 @@ header("Content-Type: text/html;charset=utf-8");
 require_once 'jsSDK.php';
 $jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
 $signPackage = $jssdk->GetSignPackage();
-//$zzh = new weixinController();
+$zzh = new weixinController();
 
 //判断是否参加过
 $z_userinfo = json_decode($zzh->userInfo,true);
@@ -102,13 +102,13 @@ if($re12[0]["bb"] == '1'){
       <span>手机：</span>
       <input class="lin-ipt" type="phone" name="user_phone" placeholder="请填写您的的手机号码" value="">
     </p>
-    <p class="lin-txt" style="color:red; padding-bottom: 0rem;"></p>
+    <div class="line"></div>
 
     <p class="lin-txt wit-bg">
 	<span>文字描述:</span>
 	<textarea rows="4" cols="50" name="user_content">
 	请在此处输入文本...</textarea></p>
-    <p class="lin-txt" style="color:red; padding-bottom: 0rem;"></p>
+    <div class="line"></div>
 
     <p class="lin-txt wit-bg">
 	<span>上传图片:</span>
