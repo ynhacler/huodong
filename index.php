@@ -26,10 +26,10 @@ $zzh = new weixinController();
 </head>
 <body class="index-bg">
 	<div style="    position: absolute;    top: 2.5rem;    left: .5rem;">
-		<a href="/wd.php">礼物设置<button class="btn-send1"></button></a>
-		<a href="/hd.php">活动规则<button class="btn-send2"></button></a>
-		<a href="/cy.php">我要参与<button class="btn-send3"></button></a>
-		<a href="/pm.php">助力排行<button class="btn-send4"></button></a>
+		<a href="/cy.php"><button class="btn-send3"></button></a>
+		<a href="/hd.php"><button class="btn-send2"></button></a>
+		<a href="/wd.php"><button class="btn-send1"></button></a>
+		<a href="/pm.php"><button class="btn-send4"></button></a>
 	</div>
 
 
