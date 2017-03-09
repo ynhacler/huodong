@@ -115,6 +115,10 @@ $signPackage = $jssdk->GetSignPackage();
                 dataType: 'json',
                 success: function(data){
                 	//var me = $('.content-block');
+                	$('.content-block').dropload(function(){
+                		me.resetload();
+                  		//me.unlock();
+                	});
                   if(data.info.length == 0){
                     // 锁定
                     //me.lock();
@@ -190,7 +194,7 @@ $signPackage = $jssdk->GetSignPackage();
                   $('.content-lists-main').append(result);
                   // 每次数据加载完，必须重置
                   me.resetload();
-                  me.unlock();
+                  //me.unlock();
                 },
                 error: function(xhr, type){
                     // 即使加载出错，也得重置
