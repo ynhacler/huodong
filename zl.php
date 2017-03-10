@@ -10,20 +10,19 @@ if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 {
     if(!isset($_GET["uu"]))//是否存在"id"的参数
     {
-        redirect("/index.php");
+        redirect("/huodong/index.php");
     }
 }else{
-	redirect("/index.php");
-	//////
+	redirect("/huodong/index.php");
 }
 
-$jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
+$jssdk = new JSSDK("wxe682f756fa360517", "dc50e76b1812252c27f8d436846caa1f");
 $signPackage = $jssdk->GetSignPackage();
 
 $zzh = new weixinController('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI']);
 //echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
-$z_userinfo = json_decode($zzh->userInfo,true);
-$z_userinfo = $z_userinfo[0];
+$z_userinfo = $zzh->userInfo;
+//var_dump($z_userinfo);exit;
 
 if(!isGet()){
 	if(!empty($_FILES['user_imgfile']['tmp_name'])){
@@ -43,7 +42,7 @@ if(!isGet()){
 		  //如果不是通过HTTP POST上传的
 		  return ;
 		}
-		$upload_path = "/data/"; //上传文件的存放路径
+		$upload_path = "./upimg/"; //上传文件的存放路径
 		//开始移动文件到相应的文件夹
 		$u_file_name = create_password(9).".".$type;
 		$file_path = $upload_path.$u_file_name;
@@ -64,9 +63,28 @@ if(!isGet()){
 	  $u_content = $_POST['user_content'];
 	  $u_gift_id= $_POST['user_gift_id'];
 
+	  //是否重复提交
+	  $openid = $z_userinfo['openid'];
+		$sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
+		//echo $sql12;
+		$re12 = select_DB_2($sql12);
+		if($re12[0]["bb"] >= '1'){
+			redirect("/huodong/zl.php?uu={$openid}");
+		}
+
 	  insert_DB("INSERT INTO event_user (wx_id,user_name,phone,content,img_url,gift_id) VALUES ('{$u_id}','{$u_name}','{$u_phone}','{$u_content}','{$u_file_name}','{$u_gift_id}');");
 	//-------------------------------------------
 }
+
+//得到主人的info
+$zr_openid = $_GET["uu"];
+$lizhisql = "select * from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$zr_openid}';";
+$zhurendd = select_DB_2($lizhisql);
+//错误的就跳index
+if(empty($zhurendd)){
+	redirect("/huodong/index.php");
+}
+$zhuren = $zhurendd[0];
 ?>
 
 <!DOCTYPE html>
@@ -82,9 +100,9 @@ if(!isGet()){
 	<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
 	<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-	<link rel="stylesheet" href="/pub/style.css">
-	<script type="text/javascript" src="/pub/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="/pub/rem.js"></script>
+	<link rel="stylesheet" href="/huodong/pub/style.css">
+	<script type="text/javascript" src="/huodong/pub/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/huodong/pub/rem.js"></script>
   <title>助力页面</title>
   <style>
 	.time-title{
@@ -150,7 +168,7 @@ if(!isGet()){
 	}
 	.ul-li{
 		padding-left: 0.3rem;
-		background-image: url(/pub/home-bg2.png);
+		background-image: url(/huodong/pub/home-bg2.png);
 		display: inline-block;
 		width: 3.3rem;
 		margin-left: .3rem;
@@ -174,18 +192,17 @@ if(!isGet()){
 
 <div class="userinfo">
 	<div class="list-head">
-		<img src="<?php echo $z_userinfo['headimgurl'];?>" alt="">
+		<img src="<?php echo $zhuren['headimgurl'];?>" alt="">
 	</div>
-	<p class="txt" style="font-weight:bold;"><?php echo "{$z_userinfo['nickname']}"; ?></p>
-	<p class="txt">排名：第709位</p>
-	<?php
-$openid = $z_userinfo['openid'];
-$lizhisql = "select praised_num from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
-$re123 = select_DB_2($lizhisql);
-//$paiming = 999;//select_DB_2("123");
-//echo "排名：{$paiming}";
+	<p class="txt" style="font-weight:bold;"><?php echo "{$zhuren['nickname']}"; ?></p>
+<?php
+	$sqlpai = "SELECT COUNT( * ) as bb FROM event_user WHERE praised_num >= ( SELECT praised_num FROM event_user WHERE wx_id='{$zhuren['wx_id']}' ) AND gift_id='{$zhuren['gift_id']}';";
+	$re12a = select_DB_2($sqlpai);
+	//var_dump($re12a);exit;
 ?>
-  <div class="list-fen"><br>助力值<br><br><font style="font-size:.2rem;font-weight:bold;"><?php echo "{$re123[0]["praised_num"]}";?></font></div>
+	<p class="txt">排名：第<?php echo "{$re12a[0]['bb']}"; ?>位</p>
+
+  <div class="list-fen"><br>助力值<br><br><font style="font-size:.2rem;font-weight:bold;"><?php echo "{$zhuren['praised_num']}";?></font></div>
 </div>
 
 
@@ -195,20 +212,20 @@ $re123 = select_DB_2($lizhisql);
 	</p>
 
 <p style="text-align:center;">
-	<a href="/cy.php"><button class="btn-back"></button></a><!--我也要参与-->
-			<a href="/wd.php"><button class="btn-reward"></button></a><!--奖品设置-->
+	<a href="/huodong/cy.php"><button class="btn-back"></button></a><!--我也要参与-->
+			<a href="https://weidian.com/?userid=1172856672&wfr=wx"><button class="btn-reward"></button></a><!--奖品设置-->
 </p>
 
 
 <p class="line-txt">
 	<span class="line"></span>
-	<?php echo "{$z_userinfo['nickname']}"; ?>的助力团
+	<?php echo "{$zhuren['nickname']}"; ?>的助力团
 	<span class="line"></span>
 </p>
 <div class="ul-li">
 	<ul class="list">
 	<?php
-		$sqldd = "select headimgurl from wx_user a,praise_table b where b.praised_uid='{$z_userinfo['openid']}' and b.praise_uid=a.openid;";
+		$sqldd = "select headimgurl from wx_user a,praise_table b where b.praised_uid='{$zhuren['openid']}' and b.praise_uid=a.openid;";
 		$re = select_DB_2($sqldd);
 		foreach ($re as $key => $value) { 
 			echo "<li>";
@@ -226,7 +243,7 @@ var helping = false;
 function help(){
 	if(!helping){
 		helping = true;
-		var url = "/zhuta.php?uu=<?php echo $_GET['uu'];?>&uud=<?php echo $openid;?>";
+		var url = "/huodong/zhuta.php?uu=<?php echo $_GET['uu'];?>&uud=<?php echo $z_userinfo['openid'];?>";
 		$.get(url,function(data){
 			alert(data.msg);
 			helping = false;
@@ -280,10 +297,10 @@ wx.ready(function(){
   });
     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 	wx.onMenuShareAppMessage({
-	    title: '大派送！', // 分享标题
+	    title: '<?php echo $zhuren["nickname"];?>需要你的助力！！', // 分享标题
 	    desc: '送豪礼！', // 分享描述
-	    link: 'http://www.uhit.me/index.php', // 分享链接
-	    imgUrl: 'http://www.uhit.me/pub/share.png', // 分享图标
+	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	    success: function () {
@@ -299,9 +316,10 @@ wx.ready(function(){
 	    }
 	});
 	wx.onMenuShareTimeline({
-	    title: '大派送！', // 分享标题
-	    link: 'http://www.uhit.me/index.php', // 分享链接
-	    imgUrl: 'http://www.uhit.me/pub/share.png', // 分享图标
+	    title: '<?php echo $zhuren["nickname"];?>需要你的助力！！', // 分享标题
+	    desc: '送豪礼！', // 分享描述
+	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    success: function () {
 	        // 用户确认分享后执行的回调函数
 	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){

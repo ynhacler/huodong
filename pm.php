@@ -3,7 +3,7 @@ require_once 'getcode.php';
 require_once 'common.php';
 header("Content-Type: text/html;charset=utf-8"); 
 require_once 'jsSDK.php';
-$jssdk = new JSSDK("wx8e339c8f60f11a7f", "86f59b665cdfcd49855ba30ad063f820");
+$jssdk = new JSSDK("wxe682f756fa360517", "dc50e76b1812252c27f8d436846caa1f");
 $signPackage = $jssdk->GetSignPackage();
 //$zzh = new weixinController();
 //$z_userinfo = json_decode($zzh->userInfo,true);
@@ -24,12 +24,12 @@ $signPackage = $jssdk->GetSignPackage();
 	<meta name="apple-mobile-web-app-capable" content="yes" /><!-- 删除苹果默认的工具栏和菜单栏 -->
 	<meta name="apple-mobile-web-app-status-bar-style" content="black" /><!-- 设置苹果工具栏颜色 -->
 	<meta name="format-detection" content="telphone=no, email=no" /><!-- 忽略页面中的数字识别为电话，忽略email识别 -->
-	<link rel="stylesheet" href="/pub/style.css">
-	<script type="text/javascript" src="/pub/jquery-1.7.2.min.js"></script>
-	<script type="text/javascript" src="/pub/rem.js"></script>
+  <link rel="stylesheet" href="/huodong/pub/style.css">
+  <script type="text/javascript" src="/huodong/pub/jquery-1.7.2.min.js"></script>
+  <script type="text/javascript" src="/huodong/pub/rem.js"></script>
   <title>排行榜</title>
 </head>
-<link rel="stylesheet" href="/pub/dropload.css">
+<link rel="stylesheet" href="/huodong/pub/dropload.css">
 <style>
 .dropload-up, .dropload-down{
 	top:-.3rem;
@@ -100,7 +100,7 @@ $signPackage = $jssdk->GetSignPackage();
   </ul>
   <div class="color-block content-block" style="top: 93%;width: 100%;margin-left: 0rem;margin-right: 0rem;position: fixed;"></div>
 
-  <script type="text/javascript" src="/pub/dropload.min.js"></script>
+  <script type="text/javascript" src="/huodong/pub/dropload.min.js"></script>
   <p style="display: none;" value='1' id="z_next" name="z_next"></p>
 	<script>
 
@@ -111,7 +111,7 @@ $signPackage = $jssdk->GetSignPackage();
 		$('.content-lists-main').empty();
 		$.ajax({
                 type: 'GET',
-                url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
+                url: "/huodong/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
                 	//gogo.noData(false);
@@ -127,7 +127,7 @@ $signPackage = $jssdk->GetSignPackage();
                     for(x in data.info){
                       var value = data.info[x];
                       result += '      <li>' +
-                              '<a href="/zl.php?uu='+value.openid+'">' +
+                              '<a href="/huodong/zl.php?uu='+value.openid+'">' +
                                 '<div class="list-head">' +
                                   '<img src="'+value.headimgurl+'" alt="">' +
                                 '</div>' +
@@ -161,7 +161,7 @@ $signPackage = $jssdk->GetSignPackage();
         loadDownFn : function(me){
             $.ajax({
                 type: 'GET',
-                url: "/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
+                url: "/huodong/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
                 dataType: 'json',
                 success: function(data){
                 	//alert(JSON.stringify(me));
@@ -177,7 +177,7 @@ $signPackage = $jssdk->GetSignPackage();
                     for(x in data.info){
                       var value = data.info[x];
                       result += '      <li>' +
-                              '<a href="/zl.php?uu='+value.openid+'">' +
+                              '<a href="/huodong/zl.php?uu='+value.openid+'">' +
                                 '<div class="list-head">' +
                                   '<img src="'+value.headimgurl+'" alt="">' +
                                 '</div>' +
@@ -232,8 +232,8 @@ wx.ready(function(){
 	wx.onMenuShareAppMessage({
 	    title: '大派送！', // 分享标题
 	    desc: '送豪礼！', // 分享描述
-	    link: 'http://www.uhit.me/index.php', // 分享链接
-	    imgUrl: 'http://www.uhit.me/pub/share.png', // 分享图标
+      link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
+      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	    success: function () {
@@ -250,8 +250,8 @@ wx.ready(function(){
 	});
 	wx.onMenuShareTimeline({
 	    title: '大派送！', // 分享标题
-	    link: 'http://www.uhit.me/index.php', // 分享链接
-	    imgUrl: 'http://www.uhit.me/pub/share.png', // 分享图标
+      link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
+      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    success: function () {
 	        // 用户确认分享后执行的回调函数
 	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){

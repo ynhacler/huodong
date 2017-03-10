@@ -12,12 +12,12 @@ require_once 'common.php';
  
         public function __construct() {
             //审核通过的移动应用所给的AppID和AppSecret
-            $this->appId = 'wx8e339c8f60f11a7f';
-            $this->appSecret = '86f59b665cdfcd49855ba30ad063f820';
+            $this->appId = 'wxe682f756fa360517';
+            $this->appSecret = 'dc50e76b1812252c27f8d436846caa1f';
             $this->token = '00000000';
 
-            $this->redis_IP = '127.0.0.1';
-            $this->redis_port = 6379;
+            //$this->redis_IP = '127.0.0.1';
+            //$this->redis_port = 6379;
         }
  
  
@@ -85,7 +85,7 @@ require_once 'common.php';
  
             if (isset($errorCode)) {
                 //将其插入日志文件
-                file_put_contents("/data/error.log", "callApi:url=$apiUrl,error=[$errorCode]$errorMsg");
+                file_put_contents("./log/error.log", "callApi:url=$apiUrl,error=[$errorCode]$errorMsg");
  
                 if ($errorCode === 40001) {
                     //尝试更正access_token后重试
@@ -112,6 +112,7 @@ require_once 'common.php';
         *
         * @param bool 是否强制刷新 accessToken
         */
+        /*
         private function _getApiToken($forceRefresh = false) {
             //先查看一下redis里是否已经缓存过access_token
             $this->redis = new Redis();
@@ -127,5 +128,6 @@ require_once 'common.php';
             }
             return $accessToken;
         }
+        */
     }
 ?>

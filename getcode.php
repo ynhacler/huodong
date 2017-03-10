@@ -6,7 +6,7 @@ require_once 'common.php';
         public $userInfo;
         public $wxId;
  
-        public function __construct($re_url = "http://www.uhit.me/index.php"){
+        public function __construct($re_url = "http://www.2326trip.com/huodong/index.php"){
 
             //只要用户一访问此模块，就登录授权，获取用户信息
             $this->userInfo = $this->getWxUserInfo($re_url);
@@ -32,10 +32,10 @@ require_once 'common.php';
 
                     if (!empty($userInfo)) {
                         //获取用户的openid
-                        $this->wxId = $userInfo['openid'];
+                        $this->wxId = $userInfo[0]['openid'];
                         //将其存在cookie里
                         setcookie('wxId', $this->wxId, time() + 60*60*24*7);
-                        return $userInfo;
+                        return $userInfo[0];
                     }
                 }
             }

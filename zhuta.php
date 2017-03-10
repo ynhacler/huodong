@@ -15,9 +15,14 @@ if(is_array($_GET) && count($_GET)>0 && isset($_GET["uu"]) && isset($_GET["uud"]
 	$re11 = select_DB_2($er1);
 	$er2 = "select count(*) as aa from wx_user where openid='{$praise}';";
 	$re22 = select_DB_2($er2);
-	
 	if($re22[0]["aa"] != 1 || $re11[0]["aa"] != 1){
 		$aa['msg'] = "ER22";
+		echo json_encode($aa);
+		exit;
+	}
+
+	if($praised == $praise){
+		$aa['msg'] = "不能自己给自己助力！";
 		echo json_encode($aa);
 		exit;
 	}
@@ -25,7 +30,7 @@ if(is_array($_GET) && count($_GET)>0 && isset($_GET["uu"]) && isset($_GET["uud"]
     //2、是否已经投过
     $er3 = "select count(*) as aa from praise_table where praised_uid='{$praised}' and praise_uid='{$praise}';";
 	$re33 = select_DB_2($er3);
-	if($re33[0]["aa"] == 1){
+	if($re33[0]["aa"] != 0){
  	   $aa['msg'] = "您已经投过了！";
 		echo json_encode($aa);
 		exit;
@@ -33,7 +38,10 @@ if(is_array($_GET) && count($_GET)>0 && isset($_GET["uu"]) && isset($_GET["uud"]
 
     //3、记录并修改praised_num
     insert_DB("insert into praise_table(praised_uid,praise_uid) values ('{$praised}','{$praise}');");
-    insert_DB("update event_user set praised_num=praised_num+1 where wx_id='{$praised}';");
+    //取到wx_id
+    $lizhisql = "select id from wx_user where openid='{$praised}';";
+	$zhurendd = select_DB_2($lizhisql);
+    insert_DB("update event_user set praised_num=praised_num+1 where wx_id='{$zhurendd[0]['id']}';");
     $aa['msg'] = "助力成功！！！";
 		echo json_encode($aa);
 		exit;

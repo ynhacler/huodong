@@ -1,23 +1,9 @@
 <?php
 require_once 'getcode.php';
-require_once 'common.php';
-
-header("Content-Type: text/html;charset=utf-8"); 
 require_once 'jsSDK.php';
 $jssdk = new JSSDK("wxe682f756fa360517", "dc50e76b1812252c27f8d436846caa1f");
 $signPackage = $jssdk->GetSignPackage();
 $zzh = new weixinController();
-
-//判断是否参加过
-$z_userinfo = $zzh->userInfo;
-
-$openid = $z_userinfo['openid'];
-$sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
-//echo $sql12;
-$re12 = select_DB_2($sql12);
-if($re12[0]["bb"] >= '1'){
-	redirect("/huodong/zl.php?uu={$openid}");
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -35,108 +21,10 @@ if($re12[0]["bb"] >= '1'){
 	<link rel="stylesheet" href="/huodong/pub/style.css">
 	<script type="text/javascript" src="/huodong/pub/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="/huodong/pub/rem.js"></script>
-  <title>参加活动</title>
-  <style>
-  .lin-txt{
-    font-size: .18rem;
-    padding-left: .2rem;
-    height: .3rem;
-    padding-top: .2rem;
-    padding-bottom: .2rem;
-  }
-  .wit-bg{
-    background-color: #fff;
-  }
-  .lin-ipt{
-    display: inline-block;
-    height: 100%;
-    width: 70%;
-    font-size: .18rem;
-    position: relative;
-    top: -.02rem;
-    color: #268c9f;
-  }
-  .botm-border{
-    border-bottom:1px solid #efefef;
-  }
-  .line{
-    margin-left: .28rem;
-    width: 3.5rem;
-    border-bottom:1px solid #d1d1d1;
-  }
-  .sub{
-    height: 1rem;
-    padding: .2rem;
-    text-align: center;
-  }
-  .sub-btn{
-    background-color: rgb(255, 0, 0);
-    color: #fff;
-    font-size: .2rem;
-    width: 3.5rem;
-    height: .6rem;
-    border-radius: .03rem;
-  }
-  input{
-    line-height: normal; /* for non-ie */
-  }
-  .t1{
-    font-size: .15rem;
-    line-height: .3rem;
-    text-indent: .3rem;
-  }
-</style>
+  <title>活动规则</title>
 </head>
-<body style="background-color:rgb(242,242,242);">
-  <div style="height:100%;margin-top:.1rem;">
-	<form action="/huodong/zl.php?uu=<?php echo $openid?>&state=123" method="post" enctype="multipart/form-data">
-	<p class="lin-txt" style="color:#8b8b8b; padding-bottom: 0rem;">个人信息</p>
-	<p class="lin-txt wit-bg">
-      <span>姓名：</span>
-      <input class="lin-ipt botm-border" type="text" name="user_name" placeholder="请填写您的姓名" value="">
-    </p>
-    <div class="line"></div>
+<body class="explain-bg">
 
-    <p class="lin-txt wit-bg">
-      <span>手机：</span>
-      <input class="lin-ipt" type="phone" name="user_phone" placeholder="请填写您的的手机号码" value="">
-    </p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-	<span>文字描述:</span><br/>
-	<textarea rows="4" cols="50" name="user_content">
-	</textarea></p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-	<span>上传图片:</span>
-	<input  class="lin-ipt" name="user_imgfile" type="file" />
-	</p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-	<span>礼物选项:</span>
-	<select name="user_gift_id" >
-		<?php
-			require_once 'common.php';
-			$re = select_DB_2("select id,title from gift;");
-			foreach ($re as $key => $value) { 
-				echo "<option value='{$value['id']}'>{$value['title']}</option>";
-			}
-
-		?>
-	</select> 
-	</p>
-    <div class="line"></div>
-
-	<br><br>
-	<p class="sub">
-      <button class="sub-btn" type="submit">开始助力</button>
-    </p>
-	</form> 
-	</div>
-</body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
 wx.config({
@@ -159,10 +47,10 @@ wx.ready(function(){
   });
     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
 	wx.onMenuShareAppMessage({
-	    title: '大派送！', // 分享标题
-	   desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
-      link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+	    title: '大派zaaaaaaaa送！', // 分享标题
+	    desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
+	    link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	    success: function () {
@@ -180,8 +68,8 @@ wx.ready(function(){
 	wx.onMenuShareTimeline({
 	    title: '大派送！', // 分享标题
 	    desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
-      link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+	    link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    success: function () {
 	        // 用户确认分享后执行的回调函数
 	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
@@ -196,4 +84,5 @@ wx.ready(function(){
 	});
 });
 </script>
+</body>
 </html>
