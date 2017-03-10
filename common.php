@@ -1,7 +1,7 @@
 <?php
 
 
-
+/*
 function valid_user(){
 	if (valid_access_token()){
 		//没有access_token就跳转到验证页面
@@ -15,7 +15,7 @@ function valid_user(){
 		} 
 	}
 }
-
+*/
 function redirect($url){
     Header("HTTP/1.1 303 See Other"); 
     Header("Location: $url"); 
@@ -64,7 +64,7 @@ function curl_request_json(&$error, $url, $param = array(), $method = 'GET', $ti
                     $logText .= ", param=".json_encode($param);
                 }
                 $logText .= ", responseText=$responseText";
-                file_put_contents("/data/error.log", $logText);
+                file_put_contents("./log/error.log", $logText);
             }
         }
         return $response;
@@ -124,7 +124,7 @@ function curl_request_text(&$error, $url, $param = array(), $method = 'GET', $ti
             //将报错写入日志文件里
             $logText = "$method $url: [$errorCode]$errorMessage";
             if (!empty($param)) $logText .= ",$param".json_encode($param);
-            file_put_contents('/data/error.log', $logText);
+            file_put_contents('./log/error.log', $logText);
         }
  
         curl_close($ch);
@@ -135,10 +135,10 @@ function curl_request_text(&$error, $url, $param = array(), $method = 'GET', $ti
     function insert_DB($sql){
         $db_ip = '127.0.0.1';
             $db_port = 3306;
-            $db_user = 'root';
-            $db_passwd = '1q2w3e';
+            $db_user = 'bhg';
+            $db_passwd = 'bhg2326';
         $conn=mysql_connect($db_ip,$db_user,$db_passwd) or die("error connecting") ; //连接数据库
-        mysql_select_db('huodong',$conn);
+        mysql_select_db('lml_bhg',$conn);
 
         mysql_query("set names 'utf8'",$conn); //数据库输出编码
         mysql_query("set character set 'utf8'",$conn);//读库 
@@ -151,10 +151,10 @@ function curl_request_text(&$error, $url, $param = array(), $method = 'GET', $ti
     function select_DB($sql){
         $db_ip = '127.0.0.1';
             $db_port = 3306;
-            $db_user = 'root';
-            $db_passwd = '1q2w3e';
+            $db_user = 'bhg';
+            $db_passwd = 'bhg2326';
         $conn=mysql_connect($db_ip,$db_user,$db_passwd) or die("error connecting") ; //连接数据库
-        mysql_select_db('huodong',$conn);
+        mysql_select_db('lml_bhg',$conn);
         mysql_query("set names 'utf8'",$conn); //数据库输出编码
         mysql_query("set character set 'utf8'",$conn);//读库 
         
@@ -167,16 +167,16 @@ function curl_request_text(&$error, $url, $param = array(), $method = 'GET', $ti
 
         mysql_close($conn);
 
-        return json_encode($results,true);
+        return ($results);
     }
 
     function select_DB_2($sql){
         $db_ip = '127.0.0.1';
             $db_port = 3306;
-            $db_user = 'root';
-            $db_passwd = '1q2w3e';
+            $db_user = 'bhg';
+            $db_passwd = 'bhg2326';
         $conn=mysql_connect($db_ip,$db_user,$db_passwd) or die("error connecting") ; //连接数据库
-        mysql_select_db('huodong',$conn);
+        mysql_select_db('lml_bhg',$conn);
         mysql_query("set names 'utf8'",$conn); //数据库输出编码
         mysql_query("set character set 'utf8'",$conn);//读库 
         
