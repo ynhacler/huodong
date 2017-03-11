@@ -12,6 +12,7 @@ $zzh = new weixinController();
 $z_userinfo = $zzh->userInfo;
 
 $openid = $z_userinfo['openid'];
+
 $sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
 //echo $sql12;
 $re12 = select_DB_2($sql12);
@@ -88,54 +89,7 @@ if($re12[0]["bb"] >= '1'){
 </style>
 </head>
 <body style="background-color:rgb(242,242,242);">
-  <div style="height:100%;margin-top:.1rem;">
-	<form action="/huodong/zl.php?uu=<?php echo $openid?>&state=123" method="post" enctype="multipart/form-data">
-	<p class="lin-txt" style="color:#8b8b8b; padding-bottom: 0rem;">个人信息</p>
-	<p class="lin-txt wit-bg">
-      <span>姓名：</span>
-      <input class="lin-ipt botm-border" type="text" name="user_name" placeholder="请填写您的姓名" value="">
-    </p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-      <span>手机：</span>
-      <input class="lin-ipt" type="phone" name="user_phone" placeholder="请填写您的的手机号码" value="">
-    </p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-	<span>文字描述:</span><br/>
-	<textarea rows="4" cols="50" name="user_content">
-	</textarea></p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-	<span>上传图片:</span>
-	<input  class="lin-ipt" name="user_imgfile" type="file" />
-	</p>
-    <div class="line"></div>
-
-    <p class="lin-txt wit-bg">
-	<span>礼物选项:</span>
-	<select name="user_gift_id" >
-		<?php
-			require_once 'common.php';
-			$re = select_DB_2("select id,title from gift;");
-			foreach ($re as $key => $value) { 
-				echo "<option value='{$value['id']}'>{$value['title']}</option>";
-			}
-
-		?>
-	</select> 
-	</p>
-    <div class="line"></div>
-
-	<br><br>
-	<p class="sub">
-      <button class="sub-btn" type="submit">开始助力</button>
-    </p>
-	</form> 
-	</div>
+  <script charset="UTF-8" defer>(function(h){function n(a){return null===a?null:a.scrollHeight>a.clientHeight?a:n(a.parentNode)}function t(b){if(b.data){var f=JSON.parse(b.data);!f.height||p||q||(d.style.height=+f.height+"px");if(f.getter){b={};var f=[].concat(f.getter),k,h=f.length,m,c,g,e;for(k=0;k<h;k++){m=k;c=f[k]||{};c.n&&(m=c.n);g=null;try{switch(c.t){case "window":e=window;break;case "scrollParent":e=n(a)||window;break;default:e=a}if(c.e)if("rect"===c.v){g={};var l=e.getBoundingClientRect();g={top:l.top,left:l.left,width:l.width,height:l.height}}else g=e[c.v].apply(e,[].concat(c.e))||!0;else c.s?(e[c.v]=c.s,g=!0):g=e[c.v]||!1}catch(u){}b[m]=g}b.innerState=!p&&!q;a.contentWindow.postMessage(JSON.stringify({queryRes:b}),"*")}}}for(var r=h.document,b=r.documentElement;b.childNodes.length&&1==b.lastChild.nodeType;)b=b.lastChild;var d=b.parentNode,a=r.createElement("iframe");d.style.overflowY="auto";d.style.overflowX="hidden";var p=d.style.height&&"auto"!==d.style.height,q="absolute"===d.style.position||window.getComputedStyle&&"absolute"===window.getComputedStyle(d,null).getPropertyValue("position")||d.currentStyle&&"absolute"===d.currentStyle.position;h.addEventListener&&h.addEventListener("message",t,!1);a.src="http://cn.mikecrm.com/vVA7rFm";a.id="mkinvVA7rFm";a.onload=function(){a.contentWindow.postMessage(JSON.stringify({cif:1}),"*")};a.frameBorder=0;a.scrolling="no";a.style.display="block";a.style.minWidth="100%";a.style.width="100px";a.style.height="100%";a.style.border="none";a.style.overflow="auto";d.insertBefore(a,b)})(window);</script>
 </body>
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>

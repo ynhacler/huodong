@@ -8,10 +8,6 @@ require_once 'jsSDK.php';
 //检查uu是否存在
 if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 {
-    if(!isset($_GET["uu"]))//是否存在"id"的参数
-    {
-        redirect("/huodong/index.php");
-    }
 }else{
 	redirect("/huodong/index.php");
 }
@@ -24,58 +20,33 @@ $zzh = new weixinController('http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_UR
 $z_userinfo = $zzh->userInfo;
 //var_dump($z_userinfo);exit;
 
-if(!isGet()){
-	if(!empty($_FILES['user_imgfile']['tmp_name'])){
-		//==========图片上传====================
-		$file = $_FILES["user_imgfile"];//得到传输的数据
-		//得到文件名称
-		$name = $file['name'];
-		$type = strtolower(substr($name,strrpos($name,'.')+1)); //得到文件类型，并且都转化成小写
-		$allow_type = array('jpg','jpeg','gif','png'); //定义允许上传的类型
-		//判断文件类型是否被允许上传
-		if(!in_array($type, $allow_type)){
-		  //如果不被允许，则直接停止程序运行
-		  return ;
-		}
-		//判断是否是通过HTTP POST上传的
-		if(!is_uploaded_file($file['tmp_name'])){
-		  //如果不是通过HTTP POST上传的
-		  return ;
-		}
-		$upload_path = "./upimg/"; //上传文件的存放路径
-		//开始移动文件到相应的文件夹
-		$u_file_name = create_password(9).".".$type;
-		$file_path = $upload_path.$u_file_name;
-		if(move_uploaded_file($file['tmp_name'],$file_path)){
-		  echo "Successfully!";
-		}else{
-		  echo "Failed!";
-		}
+//如果是从cy表单进来的用户
+    if(isset($_GET["g"])){
+		  $u_file_name = '-';	
+		  $u_id = $z_userinfo['id'];
+		  $u_name = '1';
+		  $u_phone = '1';
+		  $u_content = '1';
+		  $u_gift_id= $_GET["g"];
 
-		//===========================================
-	}else{
-		$u_file_name = 'no_upload_img';
+		  //是否重复提交
+		  $openid = $z_userinfo['openid'];
+			$sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
+			//echo $sql12;
+			$re12 = select_DB_2($sql12);
+			if($re12[0]["bb"] >= '1'){
+				redirect("/huodong/zl.php?uu={$openid}");
+			}
+
+		  insert_DB("INSERT INTO event_user (wx_id,user_name,phone,content,img_url,gift_id) VALUES ('{$u_id}','{$u_name}','{$u_phone}','{$u_content}','{$u_file_name}','{$u_gift_id}');");
+		  redirect("/huodong/zl.php?uu={$z_userinfo['openid']}");
 	}
-	
-	  $u_id = $z_userinfo['id'];
-	  $u_name = $_POST['user_name'];
-	  $u_phone = $_POST['user_phone'];
-	  $u_content = $_POST['user_content'];
-	  $u_gift_id= $_POST['user_gift_id'];
-
-	  //是否重复提交
-	  $openid = $z_userinfo['openid'];
-		$sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
-		//echo $sql12;
-		$re12 = select_DB_2($sql12);
-		if($re12[0]["bb"] >= '1'){
-			redirect("/huodong/zl.php?uu={$openid}");
-		}
-
-	  insert_DB("INSERT INTO event_user (wx_id,user_name,phone,content,img_url,gift_id) VALUES ('{$u_id}','{$u_name}','{$u_phone}','{$u_content}','{$u_file_name}','{$u_gift_id}');");
 	//-------------------------------------------
-}
 
+if(!isset($_GET["uu"]))//是否存在"id"的参数
+    {
+        redirect("/huodong/index.php");
+    }
 //得到主人的info
 $zr_openid = $_GET["uu"];
 $lizhisql = "select * from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$zr_openid}';";
