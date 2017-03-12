@@ -267,9 +267,20 @@ wx.ready(function(){
                    ] // 要隐藏的菜单项
   });
     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
+    <?php
+    	$sqldd = "select * from gift where id='{$zhuren['id']}' and b.praise_uid=a.openid;";
+		$re = select_DB_2($sqldd);
+		foreach ($re as $key => $value) { 
+			echo "<li>";
+					echo "<a href='#'>";
+						echo "<img src='{$value['headimgurl']}' alt=''>";
+					echo "</a>";
+			echo "</li>";
+		}
+    ?>
 	wx.onMenuShareAppMessage({
-	    title: '<?php echo $zhuren["nickname"];?>需要你的助力！！', // 分享标题
-	    desc: '送豪礼！', // 分享描述
+	    title: '我想要用旅行经验换孤独星球杂志，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
+	    desc: '我想要用旅行经验换孤独星球杂志，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述
 	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
 	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
