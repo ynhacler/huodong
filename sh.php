@@ -21,9 +21,94 @@ $zzh = new weixinController();
 	<link rel="stylesheet" href="/huodong/pub/style.css">
 	<script type="text/javascript" src="/huodong/pub/jquery-1.7.2.min.js"></script>
 	<script type="text/javascript" src="/huodong/pub/rem.js"></script>
-  <title>活动规则</title>
+  <title>审核信息</title>
+  <style>
+	.time-title{
+		margin-top: 2.5rem;
+		height: .4rem;
+		font-size: .3rem;
+		font-weight: bold;
+		text-align: center;
+		letter-spacing: .1rem;
+		color: red;
+	}
+	.timer{
+		text-align: center;
+		font-size: .2rem;
+	}
+	.timer font{
+		font-size: .3rem;
+		color: red;
+	}
+	.userinfo{
+		display: inline-block;
+		width: 3rem;
+		margin-left: .55rem;
+		margin-top: .3rem;
+		border-radius: .1rem;
+		height: 1rem;
+		background-color: rgb(218,185,107);
+	}
+	.list-head{
+		display: inline-block;
+		width: .7rem;
+		height: .7rem;
+		margin-left: .2rem;
+		float: left;
+	}
+	.list-head img{
+		border-radius: .3rem;
+		margin-top: .1rem;
+	}
+	.userinfo .txt{
+		font-size: .15rem;
+		margin-top: .2rem;
+		margin-left: 1rem;
+	}
+	.line-txt{
+		font-size: .2rem;
+		text-align: center;
+	}
+	.line{
+		width: 1rem;
+    border: 1px solid #000000;
+    display: inline-block;
+	}
+	.list li{
+		height: .5rem;
+		width: .5rem;
+		float: left;
+		padding: 0px;
+		margin-left: .1rem;
+	}
+	.list li img{
+		border-radius: .3rem;
+	}
+	.ul-li{
+		padding-left: 0.3rem;
+		background-image: url(/huodong/pub/home-bg2.png);
+		display: inline-block;
+		width: 3.3rem;
+		margin-left: .3rem;
+		margin-top: .1rem;
+		background-size: 3.6rem;
+	}
+</style>
 </head>
-<body class="explain-bg">
+<body class="check-bg" onload="Load('/huodong/index.php')">
+<div id="ShowDiv"></div>
+	<p class="time-title">
+		<?php
+		if($_GET['s'] == "loading"){
+			//echo "还在审核中，请等待通知！";
+		}
+		if($_GET['s'] == "NO"){
+			//echo "您的资料信息审核未通过！感谢你的参与，谢谢！";
+		}
+		?>
+
+	</p>
+
 
 <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript" charset="utf-8"></script>
 <script>
@@ -33,7 +118,7 @@ wx.config({
     timestamp: '<?php echo $signPackage["timestamp"];?>',
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
     signature: '<?php echo $signPackage["signature"];?>',
-    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    jsApiList: ['hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 });
 wx.ready(function(){
 
@@ -45,44 +130,24 @@ wx.ready(function(){
                      "menuItem:openWithSafari"//在Safari中打开
                    ] // 要隐藏的菜单项
   });
-    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-	wx.onMenuShareAppMessage({
-	    title: '大派zaaaaaaaa送！', // 分享标题
-	    desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
-	    link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
-	    type: '', // 分享类型,music、video或link，不填默认为link
-	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-	    success: function () {
-	        // 用户确认分享后执行的回调函数
-	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
-	        // 	if(data.status == 0){
-	        // 		location.reload();
-	        // 	}
-	        // },'json');
-	    },
-	    cancel: function () {
-	        // 用户取消分享后执行的回调函数
-	    }
-	});
-	wx.onMenuShareTimeline({
-	    title: '大派送！', // 分享标题
-	    desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
-	    link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
-	    success: function () {
-	        // 用户确认分享后执行的回调函数
-	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
-	        // 	if(data.status == 0){
-	        // 		location.reload();
-	        // 	}
-	        // },'json');
-	    },
-	    cancel: function () {
-	        // 用户取消分享后执行的回调函数
-	    }
-	});
+	
 });
+</script>
+<script language="javascript">
+var secs = 3; //倒计时的秒数 
+var URL ;
+function Load(url){
+URL = url;
+for(var i=secs;i>=0;i--) 
+{ 
+   window.setTimeout('doUpdate(' + i + ')', (secs-i) * 1000); 
+} 
+}
+function doUpdate(num) 
+{ 
+//document.getElementById('ShowDiv').innerHTML = '将在'+num+'秒后自动跳转到主页' ;
+if(num == 0) { window.location = URL; }
+}
 </script>
 </body>
 </html>

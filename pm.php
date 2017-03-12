@@ -82,19 +82,20 @@ $signPackage = $jssdk->GetSignPackage();
   }
 </style>
 <body class="rank-bg" style="padding-top:1.2rem;">
+<!--
 	<p class="lin-txt">
 	<span>礼物排行：</span>
 	<select name="ss" id="ss" class="lin-ipt"> 
 		<?php
-			require_once 'common.php';
-			$re = select_DB_2("select id,title from gift;");
-			foreach ($re as $key => $value) { 
-				echo "<option value='{$value['id']}'>{$value['title']}</option>";
-			}
+			//require_once 'common.php';
+			//$re = select_DB_2("select id,title from gift;");
+			//foreach ($re as $key => $value) { 
+				//echo "<option value='{$value['id']}'>{$value['title']}</option>";
+			//}
 		?>
 	</select>
 	</p>
-
+-->
   <ul class="rank-list content-lists-main">
   
   </ul>
@@ -106,6 +107,7 @@ $signPackage = $jssdk->GetSignPackage();
 
   $(function(){
   	//select变化
+    /*
   	$('#ss').change(function(){ 
 		$("#z_next").val(1);
 		$('.content-lists-main').empty();
@@ -154,6 +156,7 @@ $signPackage = $jssdk->GetSignPackage();
                 }
             });
 	});
+  */
 
   	//下拉
     var gogo = $('.content-block').dropload({
@@ -161,7 +164,8 @@ $signPackage = $jssdk->GetSignPackage();
         loadDownFn : function(me){
             $.ajax({
                 type: 'GET',
-                url: "/huodong/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
+                //url: "/huodong/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang="+$('#ss option:selected').val(),
+                url: "/huodong/getpaihang.php?next="+$("#z_next").attr("value")+"&jiang=zzh",
                 dataType: 'json',
                 success: function(data){
                 	//alert(JSON.stringify(me));
@@ -233,7 +237,7 @@ wx.ready(function(){
 	    title: '大派送！', // 分享标题
 	    desc: '送豪礼！', // 分享描述
       link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+      imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	    success: function () {
@@ -251,7 +255,7 @@ wx.ready(function(){
 	wx.onMenuShareTimeline({
 	    title: '大派送！', // 分享标题
       link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+      imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
 	    success: function () {
 	        // 用户确认分享后执行的回调函数
 	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){

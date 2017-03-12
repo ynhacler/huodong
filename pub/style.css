@@ -325,11 +325,12 @@ article,aside,section,canvas,details,figcaption,figure,footer,header,hgroup,menu
       margin-top:1.46rem;
     }
 }
-.index-bg{background-image: url(../pub/index-bg.png);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
+.check-bg{background-image: url(../pub/check-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
+.index-bg{background-image: url(../pub/index-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .explain-bg{background-image: url(../pub/explain-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .reward-bg{background-image: url(../pub/reward-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .rank-bg{background-image: url(../pub/rank-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
-.home-bg{background-image: url(../pub/home-bg.png);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
+.home-bg{background-image: url(../pub/home-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .my-bg{background-image: url(../pub/my-bg.png);background-repeat: no-repeat;background-size: 4.15rem;background-color: #fff;}
 .btn-send{background-image: url('../pub/btn-send.png');width: 1.6rem;background-repeat: no-repeat;background-size: 1.5rem;display: inline-block;height: 1.48rem;}
 .btn-send1{background-image: url('../pub/btn-send1.png');width: 1.4rem;background-repeat: no-repeat;background-size: 1.5rem;display: inline-block;height: 0.32rem;border-radius: .1rem;margin: .1rem;}

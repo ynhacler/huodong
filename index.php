@@ -24,7 +24,7 @@ $zzh = new weixinController();
   <title>首页</title>
 </head>
 <body class="index-bg">
-	<div style="    position: absolute;    top: 2.5rem;    left: .5rem;">
+	<div style="    position: absolute;    top: 3rem;    left: .5rem;">
 		<a href="/huodong/cy.php"><button class="btn-send1"></button></a>
 		<a href="/huodong/hd.php"><button class="btn-send2"></button></a>
 		<a href="https://weidian.com/?userid=1172856672&wfr=wx"><button class="btn-send3"></button></a>
@@ -56,7 +56,7 @@ wx.ready(function(){
 	    title: '大派送！', // 分享标题
 	    desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
 	    link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	    success: function () {
@@ -74,7 +74,7 @@ wx.ready(function(){
 	wx.onMenuShareTimeline({
 	    title: '大派送！', // 分享标题
 	    link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
 	    success: function () {
 	        // 用户确认分享后执行的回调函数
 	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){

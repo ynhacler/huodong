@@ -325,7 +325,8 @@ article,aside,section,canvas,details,figcaption,figure,footer,header,hgroup,menu
       margin-top:1.46rem;
     }
 }
-.index-bg{background-image: url(../images/index-bg.png);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
+.index-bg{background-image: url(../images/index-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
+.check-bg{background-image: url(../images/check-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .explain-bg{background-image: url(../images/explain-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .reward-bg{background-image: url(../images/reward-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}
 .rank-bg{background-image: url(../images/rank-bg.jpg);background-repeat: no-repeat;background-size: 4.15rem;background-color: rgb(224,0,3);}

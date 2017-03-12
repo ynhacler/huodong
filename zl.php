@@ -186,7 +186,7 @@ $zhuren = $zhurendd[0];
 	</p>
 
 <p style="text-align:center;">
-	<a href="/huodong/cy.php"><button class="btn-back"></button></a><!--我也要参与-->
+	<a href="/huodong/index.php"><button class="btn-back"></button></a><!--我也要参与-->
 			<a href="https://weidian.com/?userid=1172856672&wfr=wx"><button class="btn-reward"></button></a><!--奖品设置-->
 </p>
 
@@ -279,7 +279,7 @@ wx.ready(function(){
 	    title: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
 	    desc: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述
 	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
-	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
 	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
 	    success: function () {
@@ -298,7 +298,7 @@ wx.ready(function(){
 	    title: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
 	    desc: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述
 	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
-	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
+	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.jpg', // 分享图标
 	    success: function () {
 	        // 用户确认分享后执行的回调函数
 	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){

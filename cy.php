@@ -10,15 +10,59 @@ $zzh = new weixinController();
 
 //判断是否参加过
 $z_userinfo = $zzh->userInfo;
-
 $openid = $z_userinfo['openid'];
+//麦克提交后跳转，先插入event_user再跳转
+  if(isset($_GET["g"])){
+      $u_file_name = '-'; 
+      $u_id = $z_userinfo['id'];
+      $u_name = '1';
+      $u_phone = '1';
+      $u_content = '1';
+      $u_gift_id= '0';//$_GET["g"];
 
-$sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
+      //是否重复提交
+      $openid = $z_userinfo['openid'];
+      $sql12 = "select count(*) as bb from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
+      //echo $sql12;
+      $re12 = select_DB_2($sql12);
+      if($re12[0]["bb"] >= '1'){
+        redirect("/huodong/zl.php?uu={$openid}");
+      }
+
+      insert_DB("INSERT INTO event_user (wx_id,user_name,phone,content,img_url,gift_id,if_maike) VALUES ('{$u_id}','{$u_name}','{$u_phone}','{$u_content}','{$u_file_name}','{$u_gift_id}','1');");
+      redirect("/huodong/sh.php?s=OK");
+  }
+  
+
+$sql12 = "select state from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
 //echo $sql12;
 $re12 = select_DB_2($sql12);
-if($re12[0]["bb"] >= '1'){
-	redirect("/huodong/zl.php?uu={$openid}");
+
+//已经填写了麦克
+if(!empty($re12)){
+  //$maike = $re12[0]["if_maike"];
+  $state = $re12[0]["state"];
+
+  switch ($state) {
+    case '0'://审查中
+      redirect("/huodong/sh.php?s=loading");
+      break;
+      case '1'://审查失败
+      redirect("/huodong/sh.php?s=NO");
+      break;
+      case '2'://审查通过
+      redirect("/huodong/xw.php?s=PASS");
+      break;
+      case '3'://已经选完物品
+      redirect("/huodong/zl.php?uu={$openid}");
+      break;
+    
+    default:
+      # code...
+      break;
+  }
 }
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,7 +143,7 @@ wx.config({
     timestamp: '<?php echo $signPackage["timestamp"];?>',
     nonceStr: '<?php echo $signPackage["nonceStr"];?>',
     signature: '<?php echo $signPackage["signature"];?>',
-    jsApiList: ['onMenuShareAppMessage','onMenuShareTimeline','hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+    jsApiList: ['hideMenuItems'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
 });
 wx.ready(function(){
 
@@ -111,43 +155,7 @@ wx.ready(function(){
                      "menuItem:openWithSafari"//在Safari中打开
                    ] // 要隐藏的菜单项
   });
-    // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-	wx.onMenuShareAppMessage({
-	    title: '大派送！', // 分享标题
-	   desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
-      link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
-	    type: '', // 分享类型,music、video或link，不填默认为link
-	    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-	    success: function () {
-	        // 用户确认分享后执行的回调函数
-	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
-	        // 	if(data.status == 0){
-	        // 		location.reload();
-	        // 	}
-	        // },'json');
-	    },
-	    cancel: function () {
-	        // 用户取消分享后执行的回调函数
-	    }
-	});
-	wx.onMenuShareTimeline({
-	    title: '大派送！', // 分享标题
-	    desc: '送豪礼aaaaaaaaaaaaaaaaaa！', // 分享描述
-      link: 'http://www.2326trip.com/huodong/index.php', // 分享链接
-      imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
-	    success: function () {
-	        // 用户确认分享后执行的回调函数
-	        // $.get('/szrsgg/index.php?m=Home&c=User&a=share',function(data){
-	        // 	if(data.status == 0){
-	        // 		location.reload();
-	        // 	}
-	        // },'json');
-	    },
-	    cancel: function () {
-	        // 用户取消分享后执行的回调函数
-	    }
-	});
+	
 });
 </script>
 </html>
