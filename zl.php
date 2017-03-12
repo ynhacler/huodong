@@ -8,6 +8,10 @@ require_once 'jsSDK.php';
 //检查uu是否存在
 if(is_array($_GET)&&count($_GET)>0)//先判断是否通过get传值了
 {
+	if(!isset($_GET["uu"]))//是否存在"id"的参数
+    {
+        redirect("/huodong/index.php");
+    }
 }else{
 	redirect("/huodong/index.php");
 }
@@ -21,6 +25,7 @@ $z_userinfo = $zzh->userInfo;
 //var_dump($z_userinfo);exit;
 
 //如果是从cy表单进来的用户
+/*
     if(isset($_GET["g"])){
 		  $u_file_name = '-';	
 		  $u_id = $z_userinfo['id'];
@@ -41,12 +46,10 @@ $z_userinfo = $zzh->userInfo;
 		  insert_DB("INSERT INTO event_user (wx_id,user_name,phone,content,img_url,gift_id) VALUES ('{$u_id}','{$u_name}','{$u_phone}','{$u_content}','{$u_file_name}','{$u_gift_id}');");
 		  redirect("/huodong/zl.php?uu={$z_userinfo['openid']}");
 	}
+	*/
 	//-------------------------------------------
 
-if(!isset($_GET["uu"]))//是否存在"id"的参数
-    {
-        redirect("/huodong/index.php");
-    }
+
 //得到主人的info
 $zr_openid = $_GET["uu"];
 $lizhisql = "select * from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$zr_openid}';";
@@ -268,19 +271,13 @@ wx.ready(function(){
   });
     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
     <?php
-    	$sqldd = "select * from gift where id='{$zhuren['id']}' and b.praise_uid=a.openid;";
-		$re = select_DB_2($sqldd);
-		foreach ($re as $key => $value) { 
-			echo "<li>";
-					echo "<a href='#'>";
-						echo "<img src='{$value['headimgurl']}' alt=''>";
-					echo "</a>";
-			echo "</li>";
-		}
+    	$sqldwd = "select * from gift where id='{$zhuren['gift_id']}';";
+		$rew = select_DB_2($sqldwd);
+		$okok = $rew[0];
     ?>
 	wx.onMenuShareAppMessage({
-	    title: '我想要用旅行经验换孤独星球杂志，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
-	    desc: '我想要用旅行经验换孤独星球杂志，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述
+	    title: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
+	    desc: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述
 	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
 	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    type: '', // 分享类型,music、video或link，不填默认为link
@@ -298,8 +295,8 @@ wx.ready(function(){
 	    }
 	});
 	wx.onMenuShareTimeline({
-	    title: '<?php echo $zhuren["nickname"];?>需要你的助力！！', // 分享标题
-	    desc: '送豪礼！', // 分享描述
+	    title: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
+	    desc: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述
 	    link: 'http://www.2326trip.com/huodong/zl.php?uu=<?php echo $zhuren["openid"];?>', // 分享链接
 	    imgUrl: 'http://www.2326trip.com/huodong/pub/share.png', // 分享图标
 	    success: function () {
