@@ -152,25 +152,27 @@ $zhuren = $zhurendd[0];
 </style>
 </head>
 <body class="home-bg">
-<p class="time-title">倒计时</p>
-<p class="timer">
-	<font id="day"></font>
-	<span>天</span>
-	<font id="hour"></font>
-	<span>时</span>
-	<font id="minute"></font>
-	<span>分</span>
-	<font id="second"></font>
-	<span>秒</span>
-</p>
+ <?php
+    	$sqldwd = "select * from gift where id='{$zhuren['gift_id']}';";
+		$rew = select_DB_2($sqldwd);
+		$okok = $rew[0];
+    ?>
+    <?php //echo "<img src='{$okok['content']}' height='30' width='30'/>"; ?>
+<p class="time-title">
 
+</p>
+<p class="timer">
+
+	
+</p>
+<br/>
 <div class="userinfo">
 	<div class="list-head">
 		<img src="<?php echo $zhuren['headimgurl'];?>" alt="">
 	</div>
 	<p class="txt" style="font-weight:bold;"><?php echo "{$zhuren['nickname']}"; ?></p>
 <?php
-	$sqlpai = "SELECT COUNT( * ) as bb FROM event_user WHERE praised_num >= ( SELECT praised_num FROM event_user WHERE wx_id='{$zhuren['wx_id']}' ) AND gift_id='{$zhuren['gift_id']}';";
+	$sqlpai = "SELECT COUNT( * ) as bb FROM event_user WHERE praised_num >= ( SELECT praised_num FROM event_user WHERE wx_id='{$zhuren['wx_id']}' );";
 	$re12a = select_DB_2($sqlpai);
 	//var_dump($re12a);exit;
 ?>
@@ -270,11 +272,7 @@ wx.ready(function(){
                    ] // 要隐藏的菜单项
   });
     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
-    <?php
-    	$sqldwd = "select * from gift where id='{$zhuren['gift_id']}';";
-		$rew = select_DB_2($sqldwd);
-		$okok = $rew[0];
-    ?>
+   
 	wx.onMenuShareAppMessage({
 	    title: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享标题
 	    desc: '我想要用旅行经验换<?php echo $okok["title"];?>，快来帮<?php echo $zhuren["nickname"];?>助力', // 分享描述

@@ -101,9 +101,12 @@ $zzh = new weixinController();
 		<?php
 		if($_GET['s'] == "loading"){
 			//echo "还在审核中，请等待通知！";
+			//sleep(2);
+			//redirect("/huodong/index.php");
 		}
 		if($_GET['s'] == "NO"){
 			//echo "您的资料信息审核未通过！感谢你的参与，谢谢！";
+			//redirect("/huodong/index.php");
 		}
 		?>
 
@@ -134,20 +137,15 @@ wx.ready(function(){
 });
 </script>
 <script language="javascript">
+
 var secs = 3; //倒计时的秒数 
 var URL ;
 function Load(url){
-URL = url;
-for(var i=secs;i>=0;i--) 
-{ 
-   window.setTimeout('doUpdate(' + i + ')', (secs-i) * 1000); 
-} 
+//window.location.reload();
+//self.opener.location.reload();
+parent.location.reload();
 }
-function doUpdate(num) 
-{ 
-//document.getElementById('ShowDiv').innerHTML = '将在'+num+'秒后自动跳转到主页' ;
-if(num == 0) { window.location = URL; }
-}
+
 </script>
 </body>
 </html>

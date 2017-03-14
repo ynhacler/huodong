@@ -113,7 +113,7 @@ if(isset($_GET["ss"]))//是否存在"ss"的参数，说明在提交礼物
     background-image: linear-gradient(top, #feb100 0%, #e8a201 100%);/*颜色渐变效果*/} 
 </style>
 </head>
-<body class="index-bg">
+<body class="lw-bg">
 <?php
 $sql12 = "select level from event_user a,wx_user b where a.wx_id=b.id and b.openid='{$openid}';";
 //echo $sql12;
@@ -127,11 +127,14 @@ $gg = $re12[0]['level'];
 <div class="line"></div>
 */
 ?>
-<div style="height:100%;margin-top:2.5rem;">
+<div style="height:100%;margin-top:3.5rem;">
 <!--
 <p class="lin-txt">
-<a href="https://weidian.com/?userid=1172856672&wfr=wx"><button class="btn-send3"></button></a>
+
 </p>-->
+<div style="text-align:center;">
+<a href="https://weidian.com/?userid=1172856672&wfr=wx" style="text-align:center;"><button class="btn-send56"></button></a>
+</div>
 <form action="/huodong/xw.php" method="get" >
 <p class="lin-txt">
 	<span>选择礼物：</span>

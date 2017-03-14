@@ -30,6 +30,7 @@ $openid = $z_userinfo['openid'];
       }
 
       insert_DB("INSERT INTO event_user (wx_id,user_name,phone,content,img_url,gift_id,if_maike) VALUES ('{$u_id}','{$u_name}','{$u_phone}','{$u_content}','{$u_file_name}','{$u_gift_id}','1');");
+ 
       redirect("/huodong/sh.php?s=OK");
   }
   
