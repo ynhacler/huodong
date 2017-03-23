@@ -11,7 +11,7 @@ appsecret
 86f59b665cdfcd49855ba30ad063f820
 
 
-linux root l55621-
+linux root 
 Apache配置文件路径：/etc/httpd/conf/httpd.conf
 MySQL配置文件路径： /etc/my.cnf
 PHP配置文件路径：     /etc/php.ini
